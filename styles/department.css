@@ -13,7 +13,8 @@
 	3.3 Logo
 4. Menu
 5. Home
-6. Departments
+6. Search
+7. Departments
 
 
 
@@ -337,6 +338,26 @@ section
 {
 	margin-left: 37px;
 }
+.top_bar_item_register a
+{
+	height: 100%;
+	color: #FFFFFF;	
+	font-size: 14px;
+	font-weight: 700;
+	padding-left: 38px;
+	padding-right: 38px;
+}
+.top_bar_item_logIn a
+{
+	height: 100%;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: 700;
+	margin-left: 10px;
+	padding-left: 38px;
+	padding-right: 38px;
+}
+
 .emergencies
 {
 	height: 100%;
@@ -677,7 +698,7 @@ section
 }
 .home_content
 {
-	position: absolute;
+	position: relative;
 	top: 39.8%;
 	left: 0;
 	width: 100%;
@@ -688,7 +709,8 @@ section
 }
 .home_title h1
 {
-	font-size: 69.24px;
+	margin-top: 110px;
+	font-size: 110px;
 	font-weight: 900;
 	color: #272727;
     line-height: 1.0398;
@@ -712,21 +734,55 @@ section
 	margin-left: 3px;
 }
 
+/*********************************
+6. Search
+*********************************/
+
+.search
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 92px;
+	padding-bottom: 92px;
+}
+.search_text
+{
+	margin-top: 34px;
+}
+.search_input
+{
+	margin-top: 20px;
+}
+.search_button
+{
+	margin-top: 10px;
+	margin-right: 20px;
+}
+.search_image
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.search_image img
+{
+	max-width: 100%;
+}
 
 /*********************************
-9. Departments
+7. Departments
 *********************************/
 
 .departments
 {
 	width: 100%;
 	background: #FFFFFF;
-	padding-top: 95px;
+	padding-top: 15px;/*****95****/
 	padding-bottom: 65px;
 }
 .departments_row
 {
-	margin-top: 95px;
+	margin-top: 200px;
 }
 .department_col
 {
