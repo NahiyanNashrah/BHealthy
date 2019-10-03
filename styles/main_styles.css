@@ -958,8 +958,8 @@ section
 }
 .doct_button
 {
-	/***position: absolute;**/
-	bottom: 50;
+	position: absolute;
+	bottom: 0;
 	left: 0;
 	background: #FFFFFF;
 }
