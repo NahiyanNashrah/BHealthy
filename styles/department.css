@@ -242,7 +242,7 @@ section
 {
 	display: block;
 	position: relative;
-	line-height: 51px;
+	line-height: 40px;
 	font-size: 14px;
 	font-weight: 900;
 	color: #FFFFFF;
@@ -429,7 +429,7 @@ section
 	top: 0;
 	left: 15px;
 	width: 216px;
-	height: 177px;
+	height: 150px; /***177**/
 	background: #FFFFFF;
 	box-shadow: 0px 31px 29px rgba(0,0,0,0.09);
 	z-index: 10;
@@ -996,10 +996,7 @@ section
 .doct_button
 {
 	position: absolute;
-	bottom: 20;
-	left: 10;
-	top: 120px;
-	right: 20px;
+	margin: 50% 10% auto;
 	background: #FFFFFF;
 }
 .doct_button a
