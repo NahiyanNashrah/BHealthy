@@ -241,7 +241,7 @@ section
 	font-weight: 900;
 	color: #FFFFFF;
 	padding-left: 15px;
-	/*padding-right: 45px; */
+	padding-right: 45px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	z-index: 10;
@@ -296,7 +296,7 @@ section
 }
 .header.scrolled
 {
-	top: -48px;
+	top: -48px;   /***-48*/
 }
 
 /*********************************
@@ -356,7 +356,7 @@ section
 3.2 Header Content
 *********************************/
 
-/* .header_container
+.header_container
 {
 	width: 100%;
 	background: #FFFFFF;
@@ -394,13 +394,13 @@ section
 {
 	font-size: 24px;
 	color: #272727;
-} */
+}
 
 /*********************************
 3.3 Logo
 *********************************/
 
-/* .logo_container_outer
+.logo_container_outer
 {
 	position: absolute;
 	top: 0;
@@ -493,13 +493,13 @@ section
 	color: #8f8e8e;
 	padding-left: 3px;
 	margin-top: 2px;
-} */
+}
 .date_picker
 {
 	margin-top: 250px;
 	/* margin-left: 50%;
 	margin-right: 50%; */
-	margin-left: 251px;
+	margin-left: 151px;
 }
 .date_picker h2
 {
