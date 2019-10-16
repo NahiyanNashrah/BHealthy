@@ -1,4 +1,5 @@
-*{
+*
+{
     margin: 0;
     padding: 0;
 }
@@ -11,85 +12,62 @@ body
 }
 .container
 {
-    width: 70%;
-    margin: 120px auto 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    height: auto;
+    width: 350px;
+    height: 450px;
+    margin: auto;
+    margin-top: 120px;
     position: relative;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(150,150,150,0.5);
 
 }
 .title
 {
+
+    height: fit-content;
+    text-align: center;
     position: absolute;
-    top:-10px;
+    width: fit-content;
 	background: #283290;
     color: #fff;
     padding: 10px 20px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 300;
     letter-spacing: 1px;
-}
-.title:before
-{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -10px;
-    border-left:5px solid transparent;
-    border-right:5px solid #01a9a9;
-    border-top:5px solid  transparent;
-    border-bottom:5px solid #01a9a9;
-
+    margin-left: 30%;
+    margin-top: 10px;
 }
 .sub_container
 {
-    padding-top: 20px;
-    width: 550px;
-    position: relative;
+    width: 100%;
+    height: 40%;
+    margin-top: 50px;
     display: inline-block;
-
 }
 .form
 {
-    width:550px;
-    margin-bottom: 10px;
-
-}
-.img_container
-{
-    width: 250px;
-    margin-top: 56px;
-    height: auto;
-    background: #fff;
-    margin-left: 8%;
-    float: left;
-}
-.img_container img
-{
-    max-width: 100%;
+    width:100%;
+    margin-top: 15px;
 }
 .form label
 {
-    text-transform: capitalize;
     font-weight: 700;
 }
 .form input
 {
-    width: 100%;
+    color:#000;
     margin: 5px 0 0;
-    padding: 10px;
     box-sizing: border-box;
-    border: 2px solid #01c2c2;
-    color: #0a0b0e;
-    font-size: 12px;
+    border: 2px solid #283290;;
+    padding: 5px;
     border-radius: 3px;
+    width: 100%
 }
 .button
 {
-	display: inline-block;
-	width: 50%;
+	display: block;
+	width: 80%;
     height: 40px;   /***51*/
     text-align: center;
     background: #283290;
@@ -97,6 +75,7 @@ body
     color:#fff;
     margin: auto;
     position: relative;
+    margin-top: 20px;
 }
 .button::after
 {
@@ -127,7 +106,7 @@ a:hover
 	font-size: 12px;
 	font-weight: 900;
 	color: #FFFFFF;
-	padding-left: 15px;
+	padding-left: 20px;
 	padding-right: 45px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
@@ -141,12 +120,25 @@ a:hover
 {
 	color: #FFFFFF !important;
 }
-.reg
+.btn
 {
+    width: 100%;
     position: relative;
     margin-top: 50px;
+    display: inline-block;
+}
+.login_btn
+{
+    margin-left: 10%;
+    margin-bottom: 50px;
 }
 .reg_btn
 {
-    margin-left: 70%;
+    margin-top: 10px;
+    margin-left: 10%;
+}
+.reg
+{
+    height: 30px;
+    width: 173px;
 }
