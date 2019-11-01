@@ -2,36 +2,6 @@
 <html lang="en">
 
 <head>
-<style>
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 260px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: rgb(49, 49, 146) !important;
-}
-</style>
 
 	<title>BHealthy</title>
 	<meta charset="utf-8">
@@ -42,6 +12,7 @@
 	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/home.css">
 
 </head>
 
@@ -62,22 +33,40 @@
 								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
 								<div
 									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
-									<a href="sign_up.html" style="display:none;" >Register</a></div>
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a
-										href="login.html" style="display:none;">Login</a></div>
+									<a href="sign_up.html" id = "register">Register</a></div>
+								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
+										 id = "login">Login</a></div>
 
-										<div class="dropdown" style="display:none;" >
-											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-											<span class="caret"></span></button>
-											<ul class="dropdown-content">
-											  <li><a href="#">HTML</a></li>
-											  <li><a href="#">CSS</a></li>
-											  <li><a href="#">JavaScript</a></li>
-											</ul>
-										</div>
 
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" ><a
-										href="login.html" style="display:none;">Nayeem</a></div>
+								<div class="dropdown" id = "menu" style="display:none;">
+									<button class="btn btn-primary dropdown-toggle" type="button"
+										data-toggle="dropdown">Dropdown Example
+										<span class="caret"></span></button>
+									<ul class="dropdown-content">
+										<li><a href="#">HTML</a></li>
+										<li><a href="#">CSS</a></li>
+										<li><a href="#">JavaScript</a></li>
+									</ul>
+									
+								</div>
+								<script>
+									if(window.localStorage.getItem('user') != null){
+										document.getElementById('register').style.display = "block";
+										document.getElementById('login').style.display = "block";
+										document.getElementById('menu').style.display = "none";
+										
+									}
+									else{
+										document.getElementById('register').style.display = "none";
+										document.getElementById('login').style.display = "none";
+										document.getElementById('menu').style.display = "block";
+										
+									}
+								</script>
+
+
+								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id = "username"><a href="login.html"
+										style="display:none;">Nayeem</a></div>
 
 							</div>
 						</div>
