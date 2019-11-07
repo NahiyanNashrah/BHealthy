@@ -22,7 +22,7 @@ import org.hibernate.annotations.NaturalId;
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-            "username"
+            "phonenumber"
         }),
         @UniqueConstraint(columnNames = {
             "email"
@@ -39,7 +39,7 @@ public class User{
  
     @NotBlank
     @Size(min=3, max = 50)
-    private String username;
+    private String phonenumber;
  
     @NaturalId
     @NotBlank
@@ -59,9 +59,9 @@ public class User{
  
     public User() {}
  
-    public User(String name, String username, String email, String password) {
+    public User(String name, String phonenumber, String email, String password) {
         this.name = name;
-        this.username = username;
+        this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
     }
@@ -74,15 +74,17 @@ public class User{
         this.id = id;
     }
  
-    public String getUsername() {
-        return username;
-    }
  
-    public void setUsername(String username) {
-        this.username = username;
-    }
  
-    public String getName() {
+    public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public String getName() {
         return name;
     }
  
