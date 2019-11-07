@@ -1012,6 +1012,7 @@ section
 	padding-top: 48px;
 	padding-bottom: 55px;
 	background: #FFFFFF;
+	background-color: #20d34a;
 }
 .dept_content::after
 {
@@ -1038,6 +1039,7 @@ section
 	color: #696969;
 	margin-top: 5px;
 }
+
 .dept_text p
 {
 	color: #FFFFFF;
