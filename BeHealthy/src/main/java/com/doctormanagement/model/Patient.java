@@ -15,11 +15,11 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "doctor")
+@Table(name = "patient")
 public class Patient {
 	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private Long id;
 	String phonenumber,email,password,weight,name,bloodgroup,gender,address;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
