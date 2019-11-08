@@ -10,7 +10,7 @@ import com.doctormanagement.model.User;
  
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
-    Boolean existsByUsername(String username);
+    Optional<User> findByPhonenumber(String phonenumber);
+    Boolean existsByPhonenumber(String phonenumber);
     Boolean existsByEmail(String email);
 }

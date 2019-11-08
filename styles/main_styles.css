@@ -15,10 +15,11 @@
 5. Home
 6. Boxes
 7. About
-8. Departments
-9. Services
-10. CTA
-11. Footer
+8. Doctors
+9. Departments
+10. Services
+11. CTA
+12. Footer
 
 
 
@@ -342,20 +343,18 @@ section
 {
 	margin-left: 37px;
 }
-.top_bar_item_register
+.top_bar_item_register a
 {
 	height: 100%;
-	background: #ff0030;
-	color: #FFFFFF;
+	color: #FFFFFF;	
 	font-size: 14px;
 	font-weight: 700;
 	padding-left: 38px;
 	padding-right: 38px;
 }
-.top_bar_item_logIn
+.top_bar_item_logIn a
 {
 	height: 100%;
-	background: #ff0030;
 	color: #FFFFFF;
 	font-size: 14px;
 	font-weight: 700;
@@ -424,7 +423,7 @@ section
 	top: 0;
 	left: 15px;
 	width: 216px;
-	height: 177px;
+	height: 150px;
 	background: #FFFFFF;
 	box-shadow: 0px 31px 29px rgba(0,0,0,0.09);
 	z-index: 10;
@@ -869,7 +868,107 @@ section
 }
 
 /*********************************
-8. Departments
+8. Doctors
+*********************************/
+
+.doctors
+{
+	width: 100%;
+	background: transparent;
+	padding-top: 75px;
+	padding-bottom: 65px;	
+}
+.doctors_background
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.doctors_row
+{
+	margin-top: 79px;
+}
+.doct_col
+{
+	margin-bottom: 30px;
+}
+.doct
+{
+	width: 100%;
+	height: 100%;
+}
+.doct_image
+{
+	width: 100%;
+}
+.doct_image img
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+.doct_content
+{
+	padding-top: 48px;
+	padding-bottom: 55px;
+	background: #FFFFFF;
+}
+.doct_line
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 4px;
+	background: #20d34a;
+}
+.doct_content::after
+{
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background:  #20d34a;
+	content: '';
+}
+.doct_title
+{
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #232323;
+}
+.doct_subtitle
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #696969;
+	margin-top: 5px;
+}
+.doct_text p
+{
+	color: #FFFFFF;
+	-webkit-transform: translateY(-9px);
+	-moz-transform: translateY(-9px);
+	-ms-transform: translateY(-9px);
+	-o-transform: translateY(-9px);
+	transform: translateY(-9px);
+}
+.doct_button
+{
+	position: absolute;
+	margin: 50% 10% auto;
+	background: #FFFFFF;
+}
+.doct_button a
+{
+	color: #272727;
+}
+/*********************************
+9. Departments
 *********************************/
 
 .departments
@@ -913,6 +1012,7 @@ section
 	padding-top: 48px;
 	padding-bottom: 55px;
 	background: #FFFFFF;
+	background-color: #20d34a;
 }
 .dept_content::after
 {
@@ -939,6 +1039,7 @@ section
 	color: #696969;
 	margin-top: 5px;
 }
+
 .dept_text p
 {
 	color: #FFFFFF;
@@ -961,7 +1062,7 @@ section
 }
 
 /*********************************
-9. Services
+10. Services
 *********************************/
 
 .services
@@ -1095,13 +1196,13 @@ section
 }
 
 /*********************************
-10. CTA
+11. CTA
 *********************************/
 
 .cta
 {
 	width: 100%;
-	padding-top: 131px;
+	padding-top: 130px;
 	padding-bottom: 116px;
 }
 .cta_background
@@ -1137,7 +1238,7 @@ section
 }
 
 /*********************************
-11. Footer
+12. Footer
 *********************************/
 
 .footer
