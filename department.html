@@ -3,15 +3,18 @@
 <head>
 <style>
    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 body{
   background: black;
   font-family: 'Open Sans', sans-serif;
 }
+
 .searcha {
   width: 100%;
   position: relative;
   display: flex;
 }
+
 .searchTerm {
   width: 100%;
   border: 3px solid #00B4CC;
@@ -22,9 +25,12 @@ body{
   outline: none;
   color: #9DBFAF;
 }
+
+
 .searchTerm:focus{
   color: #00B4CC;
 }
+
 .searchButton {
   width: 40px;
   height: 36px;
@@ -51,6 +57,7 @@ body{
 <meta name="description" content="CareMed demo project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="styles/department.css">
@@ -59,7 +66,7 @@ body{
 <body>
 <div class="super_container">
 	
-	<!-- Header -->
+    <!-- Header -->
 
 	<header class="header trans_200">
 		
@@ -70,7 +77,25 @@ body{
 					<div class="col">
 						<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                             <div class="top_bar_item "><a href="#">Request an Appointment</a></div>
-							<div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="sign_up.html">Register</a></div>
+                            <div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="#con">Register</a>
+						   
+							<div id="con">
+
+									<h4><input type="radio" name="role" value="1"/> As a Doctor</h4> <br> <br> 
+									<h4><input type="radio" name="role" value="0"/> As a Patient</h4>
+									</div>
+									<script>
+									$('input:radio[name="role"]').change(
+										function(){
+											if ($(this).is(':checked') && $(this).val() == '1') {
+												window.location = "doctor_signup.html";
+											}
+											else{
+												window.location = "sign_up.html";
+											}
+										});
+									  </script>
+									  </div>
                             <div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="#">Login</a></div>
                         </div>
                         
@@ -141,6 +166,7 @@ body{
 			</div>
 		</div>
     </div>
+
 
     <div class="wrap" style="margin-top: 100px; margin-bottom: 70px;">
             <div class="searcha">
