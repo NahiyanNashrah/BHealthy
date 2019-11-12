@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+   @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: black;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.searcha {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 37px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
 <title>BHealthy</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="CareMed demo project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="styles/department.css">
@@ -15,7 +66,7 @@
 <body>
 <div class="super_container">
 	
-	<!-- Header -->
+    <!-- Header -->
 
 	<header class="header trans_200">
 		
@@ -26,7 +77,25 @@
 					<div class="col">
 						<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                             <div class="top_bar_item "><a href="#">Request an Appointment</a></div>
-							<div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="sign_up.html">Register</a></div>
+                            <div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="#con">Register</a>
+						   
+							<div id="con">
+
+									<h4><input type="radio" name="role" value="1"/> As a Doctor</h4> <br> <br> 
+									<h4><input type="radio" name="role" value="0"/> As a Patient</h4>
+									</div>
+									<script>
+									$('input:radio[name="role"]').change(
+										function(){
+											if ($(this).is(':checked') && $(this).val() == '1') {
+												window.location = "doctor_signup.html";
+											}
+											else{
+												window.location = "sign_up.html";
+											}
+										});
+									  </script>
+									  </div>
                             <div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="#">Login</a></div>
                         </div>
                         
@@ -81,84 +150,7 @@
 		</div>
     </header>
 
-    
-	<!-- Home -->
-
-	<div class="home">
-		<div class="home_slider_container">
-			<!-- Home Slider -->
-			<div class="owl-carousel owl-theme home_slider">
-				
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_background_1.jpg)"></div>
-					<div class="home_content">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-											<div class="home_title"><h1>Departments</h1></div>
-										</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_background_1.jpg)"></div>
-					<div class="home_content">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content_inner">
-										<div class="home_title"><h1>Medicine made with care</h1></div>
-										<div class="home_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam. Integer accumsan sodales odio, id tempus velit ullamcorper id. Quisque at erat eu.</p>
-										</div>
-										<div class="button home_button">
-											<a href="#">read more</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_background_1.jpg)"></div>
-					<div class="home_content">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content_inner">
-										<div class="home_title"><h1>Medicine made with care</h1></div>
-										<div class="home_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam. Integer accumsan sodales odio, id tempus velit ullamcorper id. Quisque at erat eu.</p>
-										</div>
-										<div class="button home_button">
-											<a href="#">read more</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Slider Progress -->
-			<div class="home_slider_progress"></div>
-		</div>
-	</div>
-
-	<!-- Search -->
-
-	<div class="search">
+    <div class="search">
 		<div class="container">
 			<div class="row row-lg-eq-height">
 				
@@ -173,68 +165,134 @@
 				</div>
 			</div>
 		</div>
-	</div>
+    </div>
 
-	<!-- Departments -->
 
-	<div class="departments">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-					</div>
-				</div>
-				<div class="row departmets_row">
-					
-					<!-- Department -->
-					<div class="col-lg-4 col-md-6 department_col">
-						<a href="dental_department.html">
-							<div class="department text-center trans_200">
-								<!---  <div class="department_icon"><img class="svg" src="images/service_1.svg" alt=""></div>  -->
-								<div class="department_title trans_200">Dental</div>
-								<div class="department_text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-	
-					<!-- Department -->
-					<div class="col-lg-4 col-md-6 department_col">
-						<a href="department.html">
-							<div class="department text-center trans_200">
-								<!--  <div class="department_icon"><img class="svg" src="images/service_2.svg" alt=""></div>  -->
-								<div class="department_title trans_200">Neurology</div>
-								<div class="department_text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-	
-					<!-- Department -->
-					<div class="col-lg-4 col-md-6 department_col">
-						<a href="department.html">
-							<div class="department text-center trans_200">
-								<!-- <div class="department_icon"><img class="svg" src="images/service_3.svg" alt=""></div> -->
-								<div class="department_title trans_200">Orthopedics</div>
-								<div class="department_text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-</div>
+    <div class="wrap" style="margin-top: 100px; margin-bottom: 70px;">
+            <div class="searcha">
+               <input type="text" class="searchTerm" placeholder="What Department are you looking for?">
+               <button type="submit" class="searchButton">
+                 <i class="fa fa-search"></i>
+              </button>
+            </div>
+         </div>
+    
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/custom.js"></script>
+    </div>
+    
+    
 
-</body>
-</html>
+    <div class="departments" style="margin-top: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row departmets_row">
+                
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="dental_department.html">
+                        <div class="department text-center trans_200">
+                            <!---  <div class="department_icon"><img class="svg" src="images/service_1.svg" alt=""></div>  -->
+                            <div class="department_title trans_200">Dental</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="department.html">
+                        <div class="department text-center trans_200">
+                            <!--  <div class="department_icon"><img class="svg" src="images/service_2.svg" alt=""></div>  -->
+                            <div class="department_title trans_200">Neurology</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="department.html">
+                        <div class="department text-center trans_200">
+                            <!-- <div class="department_icon"><img class="svg" src="images/service_3.svg" alt=""></div> -->
+                            <div class="department_title trans_200">Orthopedics</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="departments">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row departmets_row">
+                
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="dental_department.html">
+                        <div class="department text-center trans_200">
+                            <!---  <div class="department_icon"><img class="svg" src="images/service_1.svg" alt=""></div>  -->
+                            <div class="department_title trans_200">Dental</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="department.html">
+                        <div class="department text-center trans_200">
+                            <!--  <div class="department_icon"><img class="svg" src="images/service_2.svg" alt=""></div>  -->
+                            <div class="department_title trans_200">Neurology</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Department -->
+                <div class="col-lg-4 col-md-6 department_col">
+                    <a href="department.html">
+                        <div class="department text-center trans_200">
+                            <!-- <div class="department_icon"><img class="svg" src="images/service_3.svg" alt=""></div> -->
+                            <div class="department_title trans_200">Orthopedics</div>
+                            <div class="department_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante leo, finibus quis est ut, tempor tincidunt ipsum. Nam consequat semper sollicitudin.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    </body>
+    </html>
