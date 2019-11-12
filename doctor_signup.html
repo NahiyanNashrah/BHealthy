@@ -29,8 +29,6 @@
         //   const number_of_patients = document.getElementById("number-of-patients").value;
         //   const fees = document.getElementById("fees").value;
         //   const contact_number = document.getElementById("contact-number").value;
-
-
     
           var myurl = backendurl + "api/auth/signup";
           var $load = $("#loadMe").modal({
@@ -49,7 +47,6 @@
           data = JSON.stringify({ "username": username, 
                                   "password": password,
                                   "role" : DOCTOR });
-
           var response = xhr.response;
           xhr.onload = function () {
             if (this.status == 200) {
