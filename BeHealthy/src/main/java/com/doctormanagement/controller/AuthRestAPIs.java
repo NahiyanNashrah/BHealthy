@@ -20,12 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.doctormanagement.message.request.LoginForm;
+import com.doctormanagement.message.request.SignUpFormDoctor;
 import com.doctormanagement.message.request.SignUpFormPatient;
 import com.doctormanagement.message.response.JwtResponse;
+import com.doctormanagement.model.Doctor;
 import com.doctormanagement.model.Patient;
 import com.doctormanagement.model.Role;
 import com.doctormanagement.model.RoleName;
 import com.doctormanagement.model.User;
+import com.doctormanagement.repository.DoctorRepository;
 import com.doctormanagement.repository.PatientRepository;
 import com.doctormanagement.repository.RoleRepository;
 import com.doctormanagement.repository.UserRepository;
@@ -56,10 +59,11 @@ public class AuthRestAPIs {
     @Autowired
     PatientRepository patientRepository;
     
+    @Autowired
+    DoctorRepository doctorRepository;
     
     
     
- 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
  
@@ -77,16 +81,13 @@ public class AuthRestAPIs {
  
     
     
+       
     
     
-    
-    
-    
-    
-    @PostMapping("/signup")
-    public ResponseEntity<String> registerUser( @RequestBody SignUpFormPatient signUpRequest) {
-        if(userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
-            return new ResponseEntity<String>("Fail -> Username is already taken!",
+    @PostMapping("/signup_patient")
+    public ResponseEntity<String> registerPatient( @RequestBody SignUpFormPatient signUpRequest) {
+    	if(userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
+            return new ResponseEntity<String>("Fail -> Phone Number is already taken!",
                     HttpStatus.BAD_REQUEST);
         }
  
@@ -102,31 +103,22 @@ public class AuthRestAPIs {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
  
-        strRoles.forEach(role -> {
-          switch(role) {
-          case "doctor":
-            Role doctorRole = roleRepository.findByName(RoleName.ROLE_DOCTOR)
-                  .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-            roles.add(doctorRole);
-            
-            break;
-          case "patient":
-              Role userRole = roleRepository.findByName(RoleName.ROLE_PATIENT)
-                  .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-              roles.add(userRole);              
-          }
-        });
         
         user.setRoles(roles);
         userRepository.save(user);
  
-        return ResponseEntity.ok().body("User registered successfully!");
+    	Patient patient = new Patient(signUpRequest.getPhonenumber(),signUpRequest.getEmail(),user.getPassword(),signUpRequest.getWeight(),signUpRequest.getName(),signUpRequest.getBloodgroup(),signUpRequest.getGender(),signUpRequest.getAddress(),signUpRequest.getAge());
+    	patient.setRoles(roles);
+    	
+    	patientRepository.save(patient);
+    	
+    	
+    	return ResponseEntity.ok().body("Patient registered successfully!");
     }
     
     
-    
-    @PostMapping("/signup_patient")
-    public ResponseEntity<String> registerPatient( @RequestBody SignUpFormPatient signUpRequest) {
+    @PostMapping("/signup_doctor")
+    public ResponseEntity<String> registerDoctor( @RequestBody SignUpFormDoctor signUpRequest) {
     	if(userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
             return new ResponseEntity<String>("Fail -> Phone Number is already taken!",
                     HttpStatus.BAD_REQUEST);
@@ -162,13 +154,11 @@ public class AuthRestAPIs {
         user.setRoles(roles);
         userRepository.save(user);
  
-    	Patient patient = new Patient(signUpRequest.getPhonenumber(),signUpRequest.getEmail(),user.getPassword(),signUpRequest.getWeight(),signUpRequest.getName(),signUpRequest.getBloodgroup(),signUpRequest.getGender(),signUpRequest.getAddress(),signUpRequest.getAge());
-    	patient.setRoles(roles);
+    	Doctor doctor = new Doctor(signUpRequest.getPhonenumber(),signUpRequest.getEmail(),user.getPassword(),signUpRequest.getName(),signUpRequest.getFee(),signUpRequest.getLocation(),signUpRequest.getNumber_of_patient(),signUpRequest.getVisiting_hour(),signUpRequest.getDegree(),
+    								signUpRequest.getDepartment());
     	
-    	patientRepository.save(patient);
-    	
-    	
-    	return ResponseEntity.ok().body("User registered successfully!");
+    	doctorRepository.save(doctor);  	
+    	return ResponseEntity.ok().body("Doctor registered successfully!");
     }
     
     

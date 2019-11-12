@@ -29,7 +29,55 @@
 /*********************************
 2. Body and some general stuff
 *********************************/
+#con {
+    width: 350px;
+    height: 220px;
+    position:fixed; 
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 60px;
+	padding-left: 80px;
+    visibility: hidden;
+	display: none;
+	
+	background: #FFFFFF;
+    box-shadow: 0 0 10px rgba(150,150,150,0.5);
+	box-sizing: border-box;
 
+
+   /* background-color: rgba(22,22,22,0.5);  complimenting your modal colors */
+}
+#con:target {
+  
+    visibility: visible;
+	display: block;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	color: #232323;
+
+
+#con {
+    width: 300px;
+ 	height: 200px;
+  	position:fixed; 
+  	padding-top: 40px;
+  	padding-left:60px;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+    visibility: hidden;
+    display: none;
+    box-shadow: 0 0 10px rgba(150,150,150,0.5);
+    box-sizing: border-box;
+	background: #0bacdd;
+	color: #232323;
+}
+#con:target {
+  
+    visibility: visible;
+    display: block;
+
+}
 *
 {
 	margin: 0;
@@ -44,7 +92,7 @@ body
 	font-size: 15px;
 	font-weight: 500;
 	background: #FFFFFF;
-	color: #696969;
+	/* background: grey; */
 }
 div
 {
@@ -358,16 +406,6 @@ section
 	padding-right: 38px;
 }
 
-.emergencies
-{
-	height: 100%;
-	background: #ff0030;
-	color: #FFFFFF;
-	font-size: 14px;
-	font-weight: 700;
-	padding-left: 38px;
-	padding-right: 38px;
-}
 
 /*********************************
 3.2 Header Content
@@ -377,6 +415,7 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
+	/* background: grey; */
 }
 .header_content
 {
@@ -523,6 +562,7 @@ section
 	width: 50vw;
 	height: 100vh;
 	background: #FFFFFF;
+	/* background: grey; */
 	z-index: 101;
 	-webkit-transition: all 0.6s ease;
 	-moz-transition: all 0.6s ease;
@@ -742,6 +782,7 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
+	/* background: grey; */
 	padding-top: 50px;
 	padding-bottom: 92px;
 }
@@ -778,6 +819,7 @@ section
 .departments
 {
 	width: 100%;
+	/* background: grey; */
 	background: #FFFFFF;
 	padding-top: 15px;/*****95****/
 	padding-bottom: 65px;
