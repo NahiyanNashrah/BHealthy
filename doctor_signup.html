@@ -20,6 +20,7 @@
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
+
            const confirmpassword = document.getElementById("confirm-password").value;
           const degree = document.getElementById("degree").value;
           const department = document.getElementById("department").value;
@@ -47,6 +48,7 @@
           xhr.setRequestHeader("Content-Type", "application/json");
           data = JSON.stringify({ "name": name, 
                                   "password": password,
+
                                   "email":email,
                                   "confirm-password":confirmpassword,
                                   "degree":degree,
@@ -58,6 +60,7 @@
                                   "phonenumber":phonenumber,
                                   "role" : ['user','DOCTOR'] });
           
+
           var response = xhr.response;
           xhr.onload = function () {
             if (this.status == 200) {
@@ -77,7 +80,7 @@
         }
       </script>
     <div class="container">
-        <div class="title">Create a doctor account</div>
+        <div class="title">Create an account</div>
             <div class="row row-lg-eq-height">
                 <div class="col-lg-8">
                     <div class="sub_container">
@@ -104,6 +107,11 @@
                         <div class="form">
                             <label class="label">degree :</label>
                             <input type="text" class="input" id="degree" placeholder="">
+                        </div>
+                    
+                        <div class="form">
+                            <label class="label">gender:</label>
+                            <input type="text" class="input" id = "gender" placeholder="">
                         </div>
                     
                         <div class="form">
