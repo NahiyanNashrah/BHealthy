@@ -1,100 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <title>BHealthy</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="BHealthy demo project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/sign_up.css">
-        <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>BHealthy</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BHealthy demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/sign_up.css">
+    <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="title">Create an account</div>
-            <div class="row row-lg-eq-height">
-                <div class="col-lg-8">
-                    <div class="sub_container">
-                        <div class="form">
-                             <label class="label">Name :</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
+        <div class="title">Create a user account</div>
+        <div class="row row-lg-eq-height">
+            <div class="col-lg-8">
+                <div class="sub_container">
+                    <div class="form">
+                        <label class="label">Name :</label>
+                        <input type="text" class="input" placeholder="" id="name">
+                    </div>
 
-                        <div class="form">
-                            <label class="label">phone number :</label>
-                            <input type="number" class="input" placeholder="">
-                        </div>                    
+                    <div class="form">
+                        <label class="label">phone number :</label>
+                        <input type="number" class="input" placeholder="" id="phoneno">
+                    </div>
 
-                        <div class="form">
-                            <label class="label">email :</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">password :</label>
-                            <input type="password" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">confirm password :</label>
-                            <input type="password" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">Weight in kg:</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">blood group :</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">age :</label>
-                            <input type="number" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">gender :</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">address :</label>
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    
+                    <div class="form">
+                        <label class="label">email :</label>
+                        <input type="text" class="input" placeholder="" id="email">
+                    </div>
 
-                    
-                    
-                        <div class="reg">
-                            <div class="button reg_btn">
-                                <a href="#">Register Now!</a></div>
-                            </div>
-                        </div>
-                </div>
+                    <div class="form">
+                        <label class="label">password :</label>
+                        <input type="password" class="input" placeholder="" id="password">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">confirm password :</label>
+                        <input type="password" class="input" placeholder="" id="confirmpassword">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">Weight in kg:</label>
+                        <input type="text" class="input" placeholder="" id="weight">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">blood group :</label>
+                        <input type="text" class="input" placeholder="" id="bloodgroup">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">age :</label>
+                        <input type="number" class="input" placeholder="" id="age">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">gender :</label>
+                        <input type="text" class="input" placeholder="" id="gender">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">address :</label>
+                        <input type="text" class="input" placeholder="" id="address">
+                    </div>
 
 
-                <div class="col-lg-4">
-                    <div class="img_container">
-                        <img src="images/profile_pic.png" alt="">
-                        <input type="file" accept="image/">
+
+
+                    <div class="reg">
+                        <div class="button reg_btn">
+                            <a href="javascript:registerPatient();">Register Now!</a></div>
                     </div>
                 </div>
+            </div>
+            <script>
+                function registerPatient() {
+
+                    var name = document.getElementById('name');
+                    var phoneno = document.getElementById('phoneno');
+                    var email = document.getElementById('email');
+                    var password = document.getElementById('password');
+                    var confirmpassword = document.getElementById('confirmpassword');
+                    var weight = document.getElementById('weight');
+                    var bloodgroup = document.getElementById('bloodgroup');
+                    var age = document.getElementById('age')
+                    var gender = document.getElementById('gender');
+                    var address = document.getElementById('address');
+
+                    var propic = document.getElementById('propic');
+
+                   
+
+                    var formData = new FormData();
+                    var file = propic.files[0];
+                    
+                    if (propic.files.length == null) {
+                        alert('Please upload Image')
+                    }
+                    else if (password != confirmpassword) {
+                        alert("Password Not Matched")
+                        
+                    }
+                    else {
+                        formData.append("file", file);
+                        
+
+                        formData.append("patient", new Blob([JSON.stringify({
+                            "name": name.value,
+                            "phonenumber": phoneno.value,
+                            "email": email.value,
+                            "password": password.value,
+                            "weight": weight.value,
+                            "bloodgroup": bloodgroup.value,
+                            "age": age.value,
+                            "gender": gender.value,
+                            "address": address.value,
+                            "role": ['user', 'patient']
+                        })], {
+                            type: "application/json",
+                            processData: false, contentType: false, cache: false
+                        }));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "http://localhost:8181/api/auth/signup_patient", true);
+                        xhr.send(formData);
+                        xhr.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                // Here we go on the new page
+
+                                window.location = "home.html";
+                                alert("UPLOAD DONE")
+                            }
+                        };
 
 
-            </div>      
-</div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/custom.js"></script>  
- 
+                    }
+                }
+            </script>
+
+
+            <div class="col-lg-4">
+                <div class="img_container">
+                    <img src="images/profile_pic.png" alt="">
+                    <input type="file" accept="image/" id="propic">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 </body>
+
 </html>
