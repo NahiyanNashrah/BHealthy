@@ -22,12 +22,15 @@
           const password = document.getElementById("password").value;
         //   const confirmpassword = document.getElementById("confirm-password").value;
         //   const degree = document.getElementById("degree").value;
+        //   const gender = document.getElementById("gender").value;
         //   const department = document.getElementById("department").value;
         //   const visitinghour = document.getElementById("visiting-hour").value;
         //   const location = document.getElementById("location").value;
         //   const number_of_patients = document.getElementById("number-of-patients").value;
         //   const fees = document.getElementById("fees").value;
         //   const contact_number = document.getElementById("contact-number").value;
+
+
     
           var myurl = backendurl + "api/auth/signup";
           var $load = $("#loadMe").modal({
@@ -45,8 +48,7 @@
           xhr.setRequestHeader("Content-Type", "application/json");
           data = JSON.stringify({ "username": username, 
                                   "password": password,
-                                  "role" : ['user','ROLE_DOCTOR'] });
-
+                                  "role" : DOCTOR });
 
           var response = xhr.response;
           xhr.onload = function () {
@@ -66,7 +68,7 @@
         }
       </script>
     <div class="container">
-        <div class="title">Create a doctor account</div>
+        <div class="title">Create an account</div>
             <div class="row row-lg-eq-height">
                 <div class="col-lg-8">
                     <div class="sub_container">
@@ -93,6 +95,11 @@
                         <div class="form">
                             <label class="label">degree :</label>
                             <input type="text" class="input" id="degree" placeholder="">
+                        </div>
+                    
+                        <div class="form">
+                            <label class="label">gender:</label>
+                            <input type="text" class="input" id = "gender" placeholder="">
                         </div>
                     
                         <div class="form">

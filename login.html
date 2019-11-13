@@ -14,6 +14,7 @@
 
   <style>
     /* ANIMATIONS */
+
     /* Simple CSS3 Fade-in-down Animation */
     .fadeInDown {
       -webkit-animation-name: fadeInDown;
@@ -23,87 +24,105 @@
       -webkit-animation-fill-mode: both;
       animation-fill-mode: both;
     }
+
     @-webkit-keyframes fadeInDown {
       0% {
         opacity: 0;
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
       }
+
       100% {
         opacity: 1;
         -webkit-transform: none;
         transform: none;
       }
     }
+
     @keyframes fadeInDown {
       0% {
         opacity: 0;
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
       }
+
       100% {
         opacity: 1;
         -webkit-transform: none;
         transform: none;
       }
     }
+
     /* Simple CSS3 Fade-in Animation */
     @-webkit-keyframes fadeIn {
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
     }
+
     @-moz-keyframes fadeIn {
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
     }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
     }
+
     .fadeIn {
       opacity: 0;
       -webkit-animation: fadeIn ease-in 1;
       -moz-animation: fadeIn ease-in 1;
       animation: fadeIn ease-in 1;
+
       -webkit-animation-fill-mode: forwards;
       -moz-animation-fill-mode: forwards;
       animation-fill-mode: forwards;
+
       -webkit-animation-duration: 1s;
       -moz-animation-duration: 1s;
       animation-duration: 1s;
     }
+
     .fadeIn.first {
       -webkit-animation-delay: 0.4s;
       -moz-animation-delay: 0.4s;
       animation-delay: 0.4s;
     }
+
     .fadeIn.second {
       -webkit-animation-delay: 0.6s;
       -moz-animation-delay: 0.6s;
       animation-delay: 0.6s;
     }
+
     .fadeIn.third {
       -webkit-animation-delay: 0.8s;
       -moz-animation-delay: 0.8s;
       animation-delay: 0.8s;
     }
+
     .fadeIn.fourth {
       -webkit-animation-delay: 1s;
       -moz-animation-delay: 1s;
       animation-delay: 1s;
     }
+
     /* Simple CSS3 Fade-in Animation */
     .underlineHover:after {
       display: block;
@@ -115,12 +134,15 @@
       content: "";
       transition: width 0.2s;
     }
+
     .underlineHover:hover {
       color: #0d0d0d;
     }
+
     .underlineHover:hover:after {
       width: 100%;
     }
+
     .wrapper {
       display: flex;
       align-items: center;
@@ -130,13 +152,17 @@
       min-height: 100%;
       padding: 20px;
     }
+
+
     .modal-content {
       border-radius: 0px;
       box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
     }
+
     .modal-backdrop.show {
       opacity: 0.75;
     }
+
     .loader {
       position: relative;
       text-align: center;
@@ -151,11 +177,13 @@
       animation: spin 1s ease-in-out infinite;
       -webkit-animation: spin 1s ease-in-out infinite;
     }
+
     @keyframes spin {
       to {
         -webkit-transform: rotate(360deg);
       }
     }
+
     @-webkit-keyframes spin {
       to {
         -webkit-transform: rotate(360deg);
@@ -172,17 +200,23 @@
   <script>
     function login() {
       // import jwt_decode from 'jwt-decode';
+
       const backendurl = "http://localhost:8181/";
       const username = document.getElementById("user-name").value;
       const password = document.getElementById("password").value;
+
       var myurl = backendurl + "api/auth/signin";
       var $load = $("#loadMe").modal({
         backdrop: "static", //remove ability to close modal with click
         keyboard: false, //remove option to close with keyboard
         show: true //Display loader!
       });
+
+
       var xhr = new XMLHttpRequest();
+
       var data;
+
       xhr.open("POST", myurl, true);
       xhr.setRequestHeader("Content-Type", "application/json");
       data = JSON.stringify({ "username": username, "password": password });
@@ -194,6 +228,7 @@
           window.location.replace("home.html");
         }
         else {
+
           $('#loadMe').hide();
           alert("Wrong Phone Number or Password");
         }
