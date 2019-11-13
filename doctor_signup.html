@@ -16,20 +16,22 @@
         function signup() {
           // import jwt_decode from 'jwt-decode';
     
-          const backendurl = "http://localhost:8181/";
-          const username = document.getElementById("username").value;
+          const backendurl = "http://localhost:8081/";
+          const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
-        //   const confirmpassword = document.getElementById("confirm-password").value;
-        //   const degree = document.getElementById("degree").value;
-        //   const department = document.getElementById("department").value;
-        //   const visitinghour = document.getElementById("visiting-hour").value;
-        //   const location = document.getElementById("location").value;
-        //   const number_of_patients = document.getElementById("number-of-patients").value;
-        //   const fees = document.getElementById("fees").value;
-        //   const contact_number = document.getElementById("contact-number").value;
+           const confirmpassword = document.getElementById("confirm-password").value;
+          const degree = document.getElementById("degree").value;
+          const department = document.getElementById("department").value;
+          const visitinghour = document.getElementById("visiting-hour").value;
+          const location = document.getElementById("location").value;
+          const number_of_patients = document.getElementById("number-of-patients").value;
+          const fees = document.getElementById("fees").value;
+          const phonenumber = document.getElementById("phonenumber").value;
+
+
     
-          var myurl = backendurl + "api/auth/signup";
+          var myurl = backendurl + "api/auth/signup_doctor";
           var $load = $("#loadMe").modal({
             backdrop: "static", //remove ability to close modal with click
             keyboard: false, //remove option to close with keyboard
@@ -43,16 +45,25 @@
     
           xhr.open("POST", myurl, true);
           xhr.setRequestHeader("Content-Type", "application/json");
-          data = JSON.stringify({ "username": username, 
+          data = JSON.stringify({ "name": name, 
                                   "password": password,
-                                  "role" : ['user','ROLE_DOCTOR'] });
-
-
+                                  "email":email,
+                                  "confirm-password":confirmpassword,
+                                  "degree":degree,
+                                  "department":department,
+                                  "visiting-hour":visitinghour,
+                                  "location":location,
+                                  "number-of-patients":number_of_patients,
+                                  "fees":fees,
+                                  "phonenumber":phonenumber,
+                                  "role" : ['user','DOCTOR'] });
+          
           var response = xhr.response;
           xhr.onload = function () {
             if (this.status == 200) {
               // Here we go on the new page
-              var jsonResponse = JSON.parse(response);
+             // var jsonResponse = JSON.parse(response);
+             console.log(JSON.stringify(response));
               $("#loadMe").modal("hide");
               window.location.replace("home.html");
             }
@@ -71,8 +82,8 @@
                 <div class="col-lg-8">
                     <div class="sub_container">
                         <div class="form">
-                             <label class="label">username :</label>
-                            <input type="text" class="input" id="user-name" placeholder="">
+                             <label class="label">name :</label>
+                            <input type="text" class="input" id="name" placeholder="">
                         </div>
                     
                          <div class="form">
@@ -97,7 +108,7 @@
                     
                         <div class="form">
                             <label class="label">department :</label>
-                            <input type="number" class="input" id = "department" placeholder="">
+                            <input type="text" class="input" id = "department" placeholder="">
                         </div>
                     
                         <div class="form">
@@ -112,7 +123,7 @@
 
                         <div class="form">
                             <label class="label">number of patients :</label>
-                            <input type="number" class="input" id="number of patients" placeholder="">
+                            <input type="number" class="input" id="number-of-patients" placeholder="">
                         </div>
                     
                         <div class="form">
@@ -121,8 +132,8 @@
                         </div>
 
                         <div class="form">
-                            <label class="label">contact number :</label>
-                            <input type="number" class="input" id="contact-number" placeholder="">
+                            <label class="label">phone number :</label>
+                            <input type="number" class="input" id="phonenumber" placeholder="">
                         </div>
                     
                     
