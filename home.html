@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/home.css">
 
@@ -30,25 +31,23 @@
 						<div class="col">
 							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
 								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
-									<div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="#con">Register</a>
-						   
-										<div id="con">
-			
-												<h4><input type="radio" name="role" value="1"/> As a Doctor</h4> <br> <br> 
-												<h4><input type="radio" name="role" value="0"/> As a Patient</h4>
-												</div>
-												<script>
-												$('input:radio[name="role"]').change(
-													function(){
-														if ($(this).is(':checked') && $(this).val() == '1') {
-															window.location = "doctor_signup.html";
-														}
-														else{
-															window.location = "sign_up.html";
-														}
-													});
-												  </script>
-												  </div>	
+									<div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="#con">Register</a>						   
+										<div id="con">			
+											<h4><input type="radio" name="role" value="1"/> As a Doctor</h4> <br> <br> 
+											<h4><input type="radio" name="role" value="0"/> As a Patient</h4>
+											</div>
+											<script>
+											$('input:radio[name="role"]').change(
+												function(){
+													if ($(this).is(':checked') && $(this).val() == '1') {
+														window.location = "doctor_signup.html";
+													}
+													else{
+														window.location = "sign_up.html";
+													}
+												});
+											</script>
+										 </div>	
 
 								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
 										 id = "login">Login</a></div>
