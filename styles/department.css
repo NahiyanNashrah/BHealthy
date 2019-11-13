@@ -29,6 +29,7 @@
 /*********************************
 2. Body and some general stuff
 *********************************/
+
 #con {
     width: 350px;
     height: 220px;
@@ -54,7 +55,7 @@
     visibility: visible;
     display: block;
 
-}
+
 *
 {
 	margin: 0;
@@ -69,7 +70,7 @@ body
 	font-size: 15px;
 	font-weight: 500;
 	background: #FFFFFF;
-	/* background: grey; */
+	color: #696969;
 }
 div
 {
@@ -383,6 +384,16 @@ section
 	padding-right: 38px;
 }
 
+.emergencies
+{
+	height: 100%;
+	background: #ff0030;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: 700;
+	padding-left: 38px;
+	padding-right: 38px;
+}
 
 /*********************************
 3.2 Header Content
@@ -392,7 +403,6 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
-	/* background: grey; */
 }
 .header_content
 {
@@ -539,7 +549,6 @@ section
 	width: 50vw;
 	height: 100vh;
 	background: #FFFFFF;
-	/* background: grey; */
 	z-index: 101;
 	-webkit-transition: all 0.6s ease;
 	-moz-transition: all 0.6s ease;
@@ -759,7 +768,6 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
-	/* background: grey; */
 	padding-top: 50px;
 	padding-bottom: 92px;
 }
@@ -796,7 +804,6 @@ section
 .departments
 {
 	width: 100%;
-	/* background: grey; */
 	background: #FFFFFF;
 	padding-top: 15px;/*****95****/
 	padding-bottom: 65px;
