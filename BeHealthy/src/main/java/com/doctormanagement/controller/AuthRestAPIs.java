@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.doctormanagement.message.request.LoginForm;
 import com.doctormanagement.message.request.SignUpFormDoctor;
@@ -33,6 +36,7 @@ import com.doctormanagement.repository.PatientRepository;
 import com.doctormanagement.repository.RoleRepository;
 import com.doctormanagement.repository.UserRepository;
 import com.doctormanagement.security.jwt.JwtProvider;
+import com.doctormanagement.service.FileSystemStorageService;
  
 
  
@@ -62,6 +66,9 @@ public class AuthRestAPIs {
     @Autowired
     DoctorRepository doctorRepository;
     
+    @Autowired
+    FileSystemStorageService fileSystemStorageService;
+    
     
     
     @PostMapping("/signin")
@@ -85,7 +92,7 @@ public class AuthRestAPIs {
     
     
     @PostMapping("/signup_patient")
-    public ResponseEntity<String> registerPatient( @RequestBody SignUpFormPatient signUpRequest) {
+    public ResponseEntity<String> registerPatient(@RequestPart("file") MultipartFile file, @RequestPart("prescription_detailes") SignUpFormPatient signUpRequest) {
     	if(userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
             return new ResponseEntity<String>("Fail -> Phone Number is already taken!",
                     HttpStatus.BAD_REQUEST);
@@ -103,11 +110,19 @@ public class AuthRestAPIs {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
  
+        String name = fileSystemStorageService.store(file);
+
+        String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/download/")
+                .path(name)
+                .toUriString();
+        
+        
         
         user.setRoles(roles);
         userRepository.save(user);
  
-    	Patient patient = new Patient(signUpRequest.getPhonenumber(),signUpRequest.getEmail(),user.getPassword(),signUpRequest.getWeight(),signUpRequest.getName(),signUpRequest.getBloodgroup(),signUpRequest.getGender(),signUpRequest.getAddress(),signUpRequest.getAge());
+    	Patient patient = new Patient(signUpRequest.getPhonenumber(),signUpRequest.getEmail(),user.getPassword(),signUpRequest.getWeight(),signUpRequest.getName(),signUpRequest.getBloodgroup(),signUpRequest.getGender(),signUpRequest.getAddress(),signUpRequest.getAge(),name);
     	patient.setRoles(roles);
     	
     	patientRepository.save(patient);
