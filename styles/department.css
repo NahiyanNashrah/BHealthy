@@ -41,7 +41,7 @@
 	padding-left: 80px;
     visibility: hidden;
 	display: none;
-	
+	color:black;
 	background: #FFFFFF;
     box-shadow: 0 0 10px rgba(150,150,150,0.5);
 	box-sizing: border-box;
@@ -54,7 +54,7 @@
   
     visibility: visible;
     display: block;
-
+}
 
 *
 {
