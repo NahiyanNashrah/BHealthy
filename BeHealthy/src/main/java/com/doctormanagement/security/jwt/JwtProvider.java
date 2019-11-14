@@ -32,7 +32,7 @@ public class JwtProvider {
                     .setIssuedAt(new Date())
                     .setExpiration(new Date((new Date()).getTime() + jwtExpiration))
                     .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                    .compact(),  userPrincipal.getAuthorities());
+                    .compact(),  userPrincipal.getAuthorities(), userPrincipal.getName(),userPrincipal.getUsername());
     }
  
     public String getUserNameFromJwtToken(String token) {

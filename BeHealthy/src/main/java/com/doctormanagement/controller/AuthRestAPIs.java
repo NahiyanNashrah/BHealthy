@@ -92,7 +92,7 @@ public class AuthRestAPIs {
     
     
     @PostMapping("/signup_patient")
-    public ResponseEntity<String> registerPatient(@RequestPart("file") MultipartFile file, @RequestPart("prescription_detailes") SignUpFormPatient signUpRequest) {
+    public ResponseEntity<String> registerPatient(@RequestPart("file")  MultipartFile file, @RequestPart("patient") SignUpFormPatient signUpRequest) {
     	if(userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
             return new ResponseEntity<String>("Fail -> Phone Number is already taken!",
                     HttpStatus.BAD_REQUEST);
@@ -109,12 +109,26 @@ public class AuthRestAPIs {
  
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
- 
+        strRoles.forEach(role -> {
+            switch(role) {
+            case "doctor":
+              Role doctorRole = roleRepository.findByName(RoleName.ROLE_DOCTOR)
+                    .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+              roles.add(doctorRole);
+              
+              break;
+            case "patient":
+                Role userRole = roleRepository.findByName(RoleName.ROLE_PATIENT)
+                    .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+                roles.add(userRole);              
+            }
+          });
+        
         String name = fileSystemStorageService.store(file);
 
         String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/")
-                .path(name)
+                .path("hrllo")
                 .toUriString();
         
         

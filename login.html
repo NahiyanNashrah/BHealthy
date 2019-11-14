@@ -219,13 +219,16 @@
 
       xhr.open("POST", myurl, true);
       xhr.setRequestHeader("Content-Type", "application/json");
-      data = JSON.stringify({ "username": username, "password": password });
-      var response;
+      data = JSON.stringify({ "phonenumber": username, "password": password });
+      
       xhr.onload = function () {
         if (this.status == 200) {
           // Here we go on the new page
+          var jsonResponse = JSON.parse(this.response);
+          window.localStorage.setItem('user', JSON.stringify(jsonResponse));
           $("#loadMe").modal("hide");
-          window.location.replace("home.html");
+          console.log(jsonResponse)
+          // window.location.replace("home.html");
         }
         else {
 
