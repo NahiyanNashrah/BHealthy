@@ -20,7 +20,7 @@ public class Patient {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
-	String phonenumber,email,password,weight,name,bloodgroup,gender,address;
+	String phonenumber,email,password,weight,name,bloodgroup,gender,address,image;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", 
@@ -30,7 +30,7 @@ public class Patient {
 	
 	int age;
 	public Patient(Long id, String phonenumber, String email, String password, String weight, String name,
-			String bloodgroup, String gender, String address, int age) {
+			String bloodgroup, String gender, String address, int age,String image) {
 //		super();
 		this.id = id;
 		this.phonenumber = phonenumber;
@@ -44,7 +44,7 @@ public class Patient {
 		this.age = age;
 	}
 	public Patient( String phonenumber, String email, String password, String weight, String name,
-			String bloodgroup, String gender, String address, int age) {
+			String bloodgroup, String gender, String address, int age,String image) {
 //		super();
 //		this.id = id;
 		this.phonenumber = phonenumber;
