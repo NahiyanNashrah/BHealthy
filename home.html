@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<title>BHealthy</title>
@@ -31,57 +32,68 @@
 						<div class="col">
 							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
 								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
-									<div class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto"><a href="#con">Register</a>						   
-										<div id="con">			
-											<h4><input type="radio" name="role" value="1"/> As a Doctor</h4> <br> <br> 
-											<h4><input type="radio" name="role" value="0"/> As a Patient</h4>
-											</div>
-											<script>
-											$('input:radio[name="role"]').change(
-												function(){
-													if ($(this).is(':checked') && $(this).val() == '1') {
-														window.location = "doctor_signup.html";
-													}
-													else{
-														window.location = "sign_up.html";
-													}
-												});
-											</script>
-										 </div>	
+								<div
+									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
+									<a href="#con" id="register">Register</a>
+									<div id="con">
+										<h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
+										<h4><input type="radio" name="role" value="0" /> As a Patient</h4>
+									</div>
+									<script>
+										$('input:radio[name="role"]').change(
+											function () {
+												if ($(this).is(':checked') && $(this).val() == '1') {
+													window.location = "doctor_signup.html";
+												}
+												else {
+													window.location = "sign_up.html";
+												}
+											});
+									</script>
+								</div>
 
 								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
-										 id = "login">Login</a></div>
+										id="login">Login</a></div>
 
 
-								<div class="dropdown" id = "menu" style="display:none;">
-									<button class="btn btn-primary dropdown-toggle" type="button"
-										data-toggle="dropdown">Dropdown Example
+								<div class="dropdown" id="menu">
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+										id="dropdown">hello
 										<span class="caret"></span></button>
 									<ul class="dropdown-content">
 										<li><a href="#">HTML</a></li>
 										<li><a href="#">CSS</a></li>
 										<li><a href="#">JavaScript</a></li>
 									</ul>
-									
+
 								</div>
 								<script>
-									if(window.localStorage.getItem('user') == null){
+
+
+									if (window.localStorage.getItem('user') == null) {
 										document.getElementById('register').style.display = "block";
 										document.getElementById('login').style.display = "block";
 										document.getElementById('menu').style.display = "none";
-										
+
+
 									}
-									else{
+									else {
 										document.getElementById('register').style.display = "none";
 										document.getElementById('login').style.display = "none";
 										document.getElementById('menu').style.display = "block";
-										
+
+										var data = window.localStorage.getItem('user');
+										var obj = JSON.parse(data);
+
+
+										document.getElementById('dropdown').innerHTML = obj.name;
+
 									}
 								</script>
 
 
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id = "username"><a href="login.html"
-										style="display:none;">Nayeem</a></div>
+								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id="username"><a
+										href="login.html" style="display:none;">Nayeem</a></div>
 
 							</div>
 						</div>
