@@ -550,6 +550,6 @@ section
     padding: 8px;
 }
   
-  /* .patient_list  tr:nth-child(even) {
+.patient_list  tr:nth-child(even) {
     background-color: #dddddd;
-  } */
+}
