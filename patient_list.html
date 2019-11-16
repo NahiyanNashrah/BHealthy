@@ -8,8 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
         <!-- <link rel="stylesheet" type="text/css" href="styles/sign_up.css"> -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/patient_list.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
 
         <style>
@@ -105,9 +111,46 @@
         <div class="patient_list" id ="patientList">
         <h2>Patients List</h2>
 
+        <table class="table table-bordered table-striped">
+            <thead>
+                    <tr>
+                            <th>name</th>
+                            <th>species</th>
+                            <th>food</th>
+                        </tr>
+            </thead>
+            <tbody  id="employee_table">
+            <!-- <script src= "js/patient_list.js"></script> -->
+
+        </tbody> 
+        </table>
+
+        <script>
+        fetch('https://learnwebcode.github.io/json-example/animals-2.json').then(
+            res=>{
+                res.json().then(
+                    data=>{
+                        console.log("length of data "+data.length);
+                        console.log(data);
+                        if(data.length > 0){
+                            var temp = "";
+                            data.forEach((u)=>{
+                                temp += '<tr>';
+                                temp +='<td>'+u.name+'</td>';
+                                temp +='<td>'+u.species+'</td>';
+                                temp +='<td>'+u.foods.likes+'</td></tr>';
+
+                            })
+                            document.getElementById('employee_table').innerHTML=temp;
+                        }
+                    }
+                )
+            }
+        )
+        </script> 
     
-        <script src = "js/patient_list.js"></script>
     </div>
+
         <!-- <table>
           <tr>
             <th>Serial No.</th>
@@ -146,6 +189,16 @@
           </tr>
         </table>  -->
     
+
+
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="styles/bootstrap4/popper.js"></script>
+        <script src="styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        
+        <script src="plugins/parallax-js-master/parallax.min.js"></script>
+        <script src="js/custom.js"></script>
     </body>
 
 </html>
