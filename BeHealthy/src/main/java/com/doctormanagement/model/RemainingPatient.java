@@ -8,31 +8,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "remainingpatient")
-public class RemainPatientCount {
+public class RemainingPatient {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	String dphonenumber,date,remaining;
+	String doctorphonenumber,date,remaining;
 
-	public RemainPatientCount(Long id, String dphonenumber, String date, String remaining) {
+	public RemainingPatient(Long id, String dphonenumber, String date, String remaining) {
 //		super();
 		this.id = id;
-		this.dphonenumber = dphonenumber;
+		this.doctorphonenumber = dphonenumber;
 		this.date = date;
 		this.remaining = remaining;
 	}
 	
 	
-	public RemainPatientCount(String dphonenumber, String date, String remaining) {
+	public RemainingPatient(String dphonenumber, String date, String remaining) {
 //		super();
-		this.dphonenumber = dphonenumber;
+		this.doctorphonenumber = dphonenumber;
 		this.date = date;
 		this.remaining = remaining;
 	}
 
 
-	public RemainPatientCount() {
+	public RemainingPatient() {
 		
 	}
 	public Long getId() {
@@ -42,11 +42,11 @@ public class RemainPatientCount {
 		this.id = id;
 	}
 	
-	public String getDphonenumber() {
-		return dphonenumber;
+	public String getDoctorphonenumber() {
+		return doctorphonenumber;
 	}
-	public void setDphonenumber(String dphonenumber) {
-		this.dphonenumber = dphonenumber;
+	public void setDoctorphonenumber(String dphonenumber) {
+		this.doctorphonenumber = dphonenumber;
 	}
 	
 	public String getDate() {

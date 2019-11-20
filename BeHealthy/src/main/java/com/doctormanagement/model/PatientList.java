@@ -13,12 +13,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="patientlist")
 public class PatientList {
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	 private String doctorphonenumber;
-	 String patientname,patientphonenumber,date;
+	private String doctorphonenumber;
+	String patientname,patientphonenumber,date;
 	public PatientList(Long listid, String dphonenumber, String patientname, String pphonenumber, String date) {
 		super();
 		this.id = listid;

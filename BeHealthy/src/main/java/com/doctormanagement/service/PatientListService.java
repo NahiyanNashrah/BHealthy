@@ -21,5 +21,9 @@ public class PatientListService {
 		list = listRepository.findByDoctorphonenumber(listId)	;
 		return list;
 	}
-
+	
+	public Boolean addPatientList(PatientList patient) {
+		listRepository.save(patient);
+		return true;
+	}
 }
