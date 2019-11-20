@@ -8,7 +8,7 @@ import com.doctormanagement.model.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long>{
 
-	Optional<Doctor> findByPhonenumber(String phonenumber);
+	Doctor findByPhonenumber(String phonenumber);
     Boolean existsByPhonenumber(String phonenumber);
 	Boolean existsByEmail(String Email);
 }
