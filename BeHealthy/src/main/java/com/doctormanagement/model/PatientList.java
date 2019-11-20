@@ -15,68 +15,63 @@ import javax.persistence.Table;
 public class PatientList {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long listid;
+	 private Long id;
 	
-	 private Long did;
-	 String patientname,phonenumber;
-	 
-	public PatientList(Long listid, Long did, String patientname, String phonenumber) {
-		//super();
-		this.listid = listid;
-		this.did = did;
+	 private String doctorphonenumber;
+	 String patientname,patientphonenumber,date;
+	public PatientList(Long listid, String dphonenumber, String patientname, String pphonenumber, String date) {
+		super();
+		this.id = listid;
+		this.doctorphonenumber = dphonenumber;
 		this.patientname = patientname;
-		this.phonenumber = phonenumber;
+		this.patientphonenumber = pphonenumber;
+		this.date = date;
 	}
-
-	public PatientList(Long did, String patientname, String phonenumber) {
-//		super();
-		this.did = did;
+	public PatientList(String dphonenumber, String patientname, String pphonenumber, String date) {
+		super();
+		this.doctorphonenumber = dphonenumber;
 		this.patientname = patientname;
-		this.phonenumber = phonenumber;
+		this.patientphonenumber = pphonenumber;
+		this.date = date;
 	}
-
-	
 	
 	public PatientList() {
-		
+		super();
 	}
-
-	public Long getListid() {
-		return listid;
+	public Long getId() {
+		return id;
 	}
-
-	public void setListid(Long listid) {
-		this.listid = listid;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public Long getDid() {
-		return did;
+	public String getDoctorphonenumber() {
+		return doctorphonenumber;
 	}
-
-	public void setDid(Long did) {
-		this.did = did;
+	public void setDoctorphonenumber(String dphonenumber) {
+		this.doctorphonenumber = dphonenumber;
 	}
-
 	public String getPatientname() {
 		return patientname;
 	}
-
 	public void setPatientname(String patientname) {
 		this.patientname = patientname;
 	}
-
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getPatientphonenumber() {
+		return patientphonenumber;
 	}
-
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setPatientphonenumber(String pphonenumber) {
+		this.patientphonenumber = pphonenumber;
 	}
-
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	
 	 
-	
 	 
 	 
-	 
+
 }

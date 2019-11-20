@@ -16,9 +16,9 @@ public class PatientListService {
 	@Autowired
 	private PatientListRepository listRepository;
 	
-	public List<PatientList>getAllPatient(Long listId) {
+	public List<PatientList>getAllPatient(String listId) {
 		List<PatientList> list = new ArrayList<>(); 
-		list = listRepository.findByDid(listId)	;
+		list = listRepository.findByDoctorphonenumber(listId)	;
 		return list;
 	}
 

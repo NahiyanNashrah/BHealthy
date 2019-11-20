@@ -9,7 +9,7 @@ import com.doctormanagement.model.PatientList;
 
 public interface PatientListRepository extends JpaRepository <PatientList,Long> {
 	
-	public List<PatientList>findByDid(Long listId);
+	public List<PatientList>findByDoctorphonenumber(String listId);
 
 	
 }
