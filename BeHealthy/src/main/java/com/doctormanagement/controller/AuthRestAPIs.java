@@ -1,5 +1,8 @@
 package com.doctormanagement.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
  
@@ -14,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +30,7 @@ import com.doctormanagement.message.request.LoginForm;
 import com.doctormanagement.message.request.SignUpFormDoctor;
 import com.doctormanagement.message.request.SignUpFormPatient;
 import com.doctormanagement.message.response.JwtResponse;
+
 import com.doctormanagement.model.Doctor;
 import com.doctormanagement.model.Patient;
 import com.doctormanagement.model.Role;
