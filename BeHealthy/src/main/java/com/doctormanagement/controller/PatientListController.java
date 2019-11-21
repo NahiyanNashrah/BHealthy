@@ -20,7 +20,7 @@ public class PatientListController {
 	
 	@RequestMapping("/api/patient_list/{id}")
 	@PreAuthorize("hasRole('DOCTOR')")
-	public List<PatientList> getAllPatient(@PathVariable Long id){
+	public List<PatientList> getAllPatient(@PathVariable String id){
 		return listService.getAllPatient(id);
 		
 	}
