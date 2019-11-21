@@ -173,7 +173,19 @@
 													odio, id tempus velit ullamcorper id. Quisque at erat eu.</p>
 											</div>
 											<div class="button home_button">
-												<a href="#">Make an Appointment</a>
+													<a  href = "#" id = "makeappointment">Make an Appointment</a>
+													<script>
+															var divButton = document.getElementById('makeappointment')
+																										
+															var link;
+															if(window.localStorage.getItem('user') == null){
+																link = "sign_up.html"
+															}
+															else{
+																link = "make_appointment.html"	
+															}
+															divButton.setAttribute('href',link)
+														</script>
 											</div>
 										</div>
 									</div>
