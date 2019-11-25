@@ -15,6 +15,7 @@ public class AppointmentService {
 	
 	public Boolean makeAppointment(PatientList patient) {
 		Boolean possible = remainingPatientService.isPossible(patient.getDoctorphonenumber(),patient.getDate());
+//		System.out.println(possible);
 		if(possible == true) {
 			return patientListService.addPatientList(patient);
 			
