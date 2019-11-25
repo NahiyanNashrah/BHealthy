@@ -30,7 +30,7 @@ public class RemainingPatientService {
 	
 	
 	public String nextDate() {
-    	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+    	SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
     	Date date = new Date(System.currentTimeMillis());
     	final Calendar calendar = Calendar.getInstance();
     	calendar.setTime(date);
@@ -41,7 +41,7 @@ public class RemainingPatientService {
 	public Boolean isPossible(String doctorphonenumber,String date) {
 		RemainingPatient remain =  remainingPatientRepository.findByDoctorphonenumberAndDate(doctorphonenumber,date);
 		int patientNumber = Integer.parseInt(remain.getRemaining());
-		if(patientNumber>0) {
+		 if(patientNumber>0) {
 			reducePatientList(remain);
 			return true;
 		}

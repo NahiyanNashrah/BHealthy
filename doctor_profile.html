@@ -5,7 +5,7 @@
 	<title>BHealthy</title>
 	<meta charset="utf-8">
 	<script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
-    <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">
+	<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="CareMed demo project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +13,14 @@
 	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="styles/doctor_profile.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -101,53 +104,120 @@
 				<div class="container  pull-left">
 					<div class="image_container"><img src="images/2.jpg"></div>
 					<div class="containter">
-						<div class="title"><strong>Name :</strong> Dr. James Smith
+						<div class="title" id="name">
 						</div>
-
-						<div class="title"><strong>Degree :</strong>
+						<div class="title" id="department">
 						</div>
-						<div class="title"><strong>Chamber :</strong> </div>
-						<div class="title"><strong>Visiting hour : </strong></div>
-						<div class="title"><strong>Fees :</strong></div>
+						<div class="title" id="degree">
+						</div>
+						<div class="title" id="location"> </div>
+						<div class="title" id="visiting_hour"></div>
+						<div class="title" id="fee"></div>
 					</div>
 				</div>
 			</div>
 
+			<script>
+				function getUrlVars() {
+					var vars = {};
+					var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+						vars[key] = value;
+					});
+					return vars;
+				}
+
+
+				var id = getUrlVars()["id"];
+
+				var url = "http://localhost:8181/api/auth/single_doctor/" + id;
+
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", url, true);
+				xhr.onload = function () {
+					if (this.status == 200) {
+						console.log(this.response);
+						var dataJSON = JSON.parse(this.response)
+						var name = document.getElementById('name');
+						var degree = document.getElementById('degree');
+						var location = document.getElementById('location')
+						var visiting_hour = document.getElementById('visiting_hour');
+						var fee = document.getElementById('fee');
+						var department = document.getElementById('department')
+						// var dataJSON = JSON.parse(this.response);
+
+						name.textContent = "Name :    " + dataJSON.name;
+						degree.textContent = "Degree :    " + dataJSON.degree;
+						location.textContent = "Location :    " + dataJSON.location;
+						visiting_hour.textContent = "Visiting Hour :     " + dataJSON.visiting_hour;
+						fee.textContent = "Visiting Fee :     " + dataJSON.fee;
+						department.textContent = "Department :    " + dataJSON.department;
+
+
+
+					}
+				};
+				xhr.send();
+
+			</script>
+
 			<div class=" pull-right col-md-4" style="margin-top: 300px;">
 
-					
-				
+
+
 
 				<div class="date_picker">
 
-						<input id="datepicker" width="276" />
-						<script>
-							$('#datepicker').datepicker({
-								uiLibrary: 'bootstrap4'
-							});
-						</script>
-					
-					<!-- <form>
-						<label>Date</label>
-						<input id="datepicker" type="text">
-
+					<input id="datepicker" width="276" />
 					<script>
-						var datepicker = new ej.calendars.DatePicker({ width: "255px" });
-						datepicker.appendTo('#datepicker');
-					</script><br> -->
-						<!-- <input type="submit" class="btn btn-primary"> -->
-						<!------Appointment button-------->
-						<div class="appointment">
-							<div class="button appointment_btn">
-								<a href="make_appointment.html">Make an Appointment</a>
-							</div>
+						$('#datepicker').datepicker({
+							uiLibrary: 'bootstrap4'
+						});
+					</script>
+
+
+					<div class="appointment">
+						<div class="button appointment_btn">
+							<a href=" javascript: make_appointment();">Make an Appointment</a>
 						</div>
+					</div>
 					</form>
 				</div>
 			</div>
 
 		</div>
 
+		<script>
+			function make_appointment() {
+				var date = document.getElementById('datepicker').value;
+				var request = new XMLHttpRequest()
+
+				// Open a new connection, using the GET request on the URL endpoint
+				var data;
+				request.open("POST", "http://localhost:8181/api/makeappointment", false);
+				request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTk3MTQyOTU5MiIsImlhdCI6MTU3NDY3MDE2MywiZXhwIjoxNTc0NjcxMDYzfQ.Gl0E4Xo3oLBapxZtbOJEGWXhb3EbAAI1Y__gyOclZ3PLp7UHdom1uR3sKqYlgv8SxBswgUSZh0tG3g4IjuxS2Q")
+				request.setRequestHeader("Content-Type", "application/json");
+				// 			doctorphonenumber;
+				// String patientname,patientphonenumber,date
+				var id = getUrlVars()["id"];
+				data = JSON.stringify({ "doctorphonenumber": id, "patientname": "Nayeem", "patientphonenumber": "01971429592", "date": date });
+				request.onload = function () {
+					// Begin accessing JSON data here
+					if(this.status == 200){
+						alert("Appointment Accepted. Please present timely")
+					}	
+					else{
+						alert("No appointment possible today. Try different date or after few hour.")
+					}
+					var data = JSON.parse(this.response)
+					console.log(data)
+				}
+
+				request.send(data);
+
+
+			}
+		</script>
+
 
 
 
@@ -156,14 +226,8 @@
 	</div>
 
 	</div>
-	<!-- <script>
-			$('.datepicker').pickadate({
-				today: '',
-				clear: 'Clear selection',
-				close: 'Cancel'
-			})
-		</script> -->
-	<<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="styles/bootstrap4/popper.js"></script>
 	<script src="styles/bootstrap4/bootstrap.min.js"></script>
 	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>

@@ -16,8 +16,8 @@ public class RemainingPatientController {
 	RemainingPatientService remainingPatientService;
 	
 	@PreAuthorize("hasRole('DOCTOR')")
-	@GetMapping("/api/addavailability/{did}")
-	public void addavailability(@PathVariable String did) {
-		remainingPatientService.addavailability(did);
+	@GetMapping("/api/addavailability/{doctorphonenumber}")
+	public void addavailability(@PathVariable String doctorphonenumber) {
+		remainingPatientService.addavailability(doctorphonenumber);
 	}
 }

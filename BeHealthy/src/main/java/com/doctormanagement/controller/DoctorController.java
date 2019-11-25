@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,11 +23,15 @@ public class DoctorController {
 	@GetMapping("/api/auth/home/doctor_list")
 	public List<Doctor> getAllDoctor(){
 		List<Doctor> all = doctorRepository.findAll();
-//		result = null;
-//		for(int i = 0 ;i<7;i++) {
-//			result.add(all.get(i));
-//		}
 		return all;
 		
 	}
+	
+	@CrossOrigin
+	@GetMapping("/api/auth/single_doctor/{phonenumber}")
+	public Doctor getDoctor(@PathVariable String phonenumber) {
+		return doctorRepository.findByPhonenumber(phonenumber);
+		
+	}
+	
 }
