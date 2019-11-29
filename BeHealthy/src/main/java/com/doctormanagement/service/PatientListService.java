@@ -26,4 +26,9 @@ public class PatientListService {
 		listRepository.save(patient);
 		return true;
 	}
+	
+	public List<PatientList> getAllPatientUsingPhonenumber (String phonenumber){
+		return listRepository.findByPatientphonenumber(phonenumber);
+	}
+	
 }
