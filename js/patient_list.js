@@ -1,10 +1,17 @@
 var xhr = new XMLHttpRequest()
 
+var token;
+var data = window.localStorage.getItem('user');
+dataJson = JSON.parse(data);
+token = dataJson.accessToken;
+ 	
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+console.log(date);
 // Open a new connection, using the GET xhr on the URL endpoint 
-xhr.open('GET', 'http://localhost:8181/api/patient_list/10', true)
-// xhr.setRequestHeader("Content-Type", "application/json");
-// req.setRequestHeader( 'Accept', 'application/json' );
-xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTYxMzU3NTI4OSIsImlhdCI6MTU3Mzk4ODI0MCwiZXhwIjoxNTczOTg5MTQwfQ.zZ1wgl2qDNyHV9g14oToqoTrkvSivKHxe6fvZcv2ynVUUGUfEn-wu27EjNsd2JY-k-n-T4Wk3FM2lFdbXLdzIw")
+xhr.open('GET', 'http://localhost:8181/api/patient_list/' + dataJson.phonenumber + "/" + date , true)
+
+xhr.setRequestHeader("Authorization", "Bearer "+token);
 xhr.onload = function () {
     var data = JSON.parse(this.response)
 
