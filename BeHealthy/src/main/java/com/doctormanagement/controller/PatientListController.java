@@ -1,5 +1,8 @@
 package com.doctormanagement.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +23,15 @@ public class PatientListController {
 	private PatientListService listService;
 	
 	@CrossOrigin
-	@RequestMapping("/api/patient_list/{doctorPhonenumber}/{date}")
+	@RequestMapping("/api/patient_list/{doctorPhonenumber}")
 	@PreAuthorize("hasRole('DOCTOR')")
-	public List<PatientList> getAllPatient(@PathVariable String doctorPhonenumber,@PathVariable String date){
-		return listService.getAllPatientByDateDoctor(doctorPhonenumber,date);
+	public List<PatientList> getAllPatient(@PathVariable String doctorPhonenumber){
+		SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
+    	Date date = new Date(System.currentTimeMillis());
+    	final Calendar calendar = Calendar.getInstance();
+    	calendar.setTime(date);
+    	String date1 = formatter.format(calendar.getTime());
+		return listService.getAllPatientByDateDoctor(doctorPhonenumber,date1);
 		
 	}
 }

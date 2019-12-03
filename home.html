@@ -150,10 +150,13 @@
 
 		<!-- Home -->
 
+		
+
+
 		<div class="home">
 			<div class="home_slider_container">
 				<!-- Home Slider -->
-				<div class="owl-carousel owl-theme home_slider">
+				<div class="owl-carousel owl-theme home_slider" id="owl-carousel">
 
 					<!-- Slider Item -->
 					<div class="owl-item">
@@ -168,24 +171,22 @@
 												<h1>Make an Appointment</h1>
 											</div>
 											<div class="home_text">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-													tempus vestibulum mauris quis aliquam. Integer accumsan sodales
-													odio, id tempus velit ullamcorper id. Quisque at erat eu.</p>
+												<p>corper id. Quisque at erat eu.</p>
 											</div>
 											<div class="button home_button">
-													<a  href = "#" id = "makeappointment">Make an Appointment</a>
-													<script>
-															var divButton = document.getElementById('makeappointment')
-																										
-															var link;
-															if(window.localStorage.getItem('user') == null){
-																link = "sign_up.html"
-															}
-															else{
-																link = "make_appointment.html"	
-															}
-															divButton.setAttribute('href',link)
-														</script>
+												<a href="#" id="makeappointment">Make an Appointment</a>
+												<script>
+													var divButton = document.getElementById('makeappointment')
+
+													var link;
+													if (window.localStorage.getItem('user') == null) {
+														link = "sign_up.html"
+													}
+													else {
+														link = "make_appointment.html"
+													}
+													divButton.setAttribute('href', link)
+												</script>
 											</div>
 										</div>
 									</div>
@@ -363,14 +364,14 @@
 
 						// Open a new connection, using the GET request on the URL endpoint
 						request.open('GET', 'http://localhost:8181/api/auth/home/doctor_list', false)
-						
+
 						request.onload = function () {
 							// Begin accessing JSON data here
 
 							var data = JSON.parse(this.response)
 							console.log(data)
 							data.forEach(doctorJSON => {
-								
+
 								var list = document.getElementById('doctorlist');
 								var singleDoctor = document.createElement('div');
 								singleDoctor.setAttribute("class", "col-lg-3 col-md-6 doct_col");
