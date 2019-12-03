@@ -248,11 +248,11 @@
 
 				<div class="date_picker">
 
-					<input id="datepicker" width="276"  placeholder="Date" />
+					<input id="datepicker" width="276" placeholder="Date" />
 					<script>
 						$('#datepicker').datepicker({
 							uiLibrary: 'bootstrap4',
-							format: 'dd-mm-yyyy' 
+							format: 'dd-mm-yyyy'
 						});
 					</script>
 					<div class="col-xs-3" style="width: 275px;margin-top: 30px;">
@@ -282,14 +282,14 @@
 		function addAvailability() {
 			var data = JSON.parse(window.localStorage.getItem('user'));
 
-			var url = "http://localhost:8181/api/addavailability/" +data.phonenumber +"/"+document.getElementById('datepicker').value +"/"+document.getElementById('numberOfPatient').value ;
+			var url = "http://localhost:8181/api/addavailability/" + data.phonenumber + "/" + document.getElementById('datepicker').value + "/" + document.getElementById('numberOfPatient').value;
 			// {doctorphonenumber}/{date}/{numberOfPatient}
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", url, true);
 			var token = data.accessToken;
 			console.log(data.accessToken)
-			xhr.setRequestHeader("Authorization",  "Bearer "+token);
+			xhr.setRequestHeader("Authorization", "Bearer " + token);
 
 			xhr.onload = function () {
 				if (this.status == 200) {
