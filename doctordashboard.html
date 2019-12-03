@@ -73,10 +73,16 @@
 									<ul class="dropdown-content">
 										<li><a href="#">HTML</a></li>
 										<li><a href="#">CSS</a></li>
-										<li><a href="#">JavaScript</a></li>
+										<li><a href="javascript: logout()">Logout</a></li>
 									</ul>
 
 								</div>
+								<script>
+									function logout() {
+										window.localStorage.clear();
+										window.location.replace("home.html");
+									}
+								</script>
 								<script>
 
 
@@ -242,22 +248,21 @@
 
 				<div class="date_picker">
 
-					<input id="datepicker" width="276" placeholder="Date" />
+					<input id="datepicker" width="276"  placeholder="Date" />
 					<script>
 						$('#datepicker').datepicker({
-							uiLibrary: 'bootstrap4'
+							uiLibrary: 'bootstrap4',
+							format: 'dd-mm-yyyy' 
 						});
 					</script>
 					<div class="col-xs-3" style="width: 275px;margin-top: 30px;">
 
-						<input class="form-control" id="ex1" type="text" placeholder="Number of Patient ">
+						<input class="form-control" id="numberOfPatient" type="text" placeholder="Number of Patient ">
 					</div>
-					<!-- <input  class = "form-control" width="100" />
-					 -->
 
 					<div class="appointment">
 						<div class="button appointment_btn">
-							<a href="#"> Patient Want to Visit</a>
+							<a href="javascript: addAvailability();"> Patient Want to Visit</a>
 						</div>
 					</div>
 					</form>
@@ -272,6 +277,30 @@
 	</div>
 
 	</div>
+
+	<script>
+		function addAvailability() {
+			var data = JSON.parse(window.localStorage.getItem('user'));
+
+			var url = "http://localhost:8181/api/addavailability/" +data.phonenumber +"/"+document.getElementById('datepicker').value +"/"+document.getElementById('numberOfPatient').value ;
+			// {doctorphonenumber}/{date}/{numberOfPatient}
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", url, true);
+			var token = data.accessToken;
+			console.log(data.accessToken)
+			xhr.setRequestHeader("Authorization",  "Bearer "+token);
+
+			xhr.onload = function () {
+				if (this.status == 200) {
+					window.location.replace('doctordashboard.html');
+
+
+				}
+			};
+			xhr.send();
+		}
+	</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="styles/bootstrap4/popper.js"></script>
