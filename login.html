@@ -228,7 +228,17 @@
           window.localStorage.setItem('user', JSON.stringify(jsonResponse));
           // $("#loadMe").modal("hide");
           console.log(jsonResponse)
-          window.location.replace("home.html");
+          var roleuser;
+          jsonResponse.authorities.forEach(doctorJSON => {
+            roleuser = doctorJSON.authority;
+          });
+          console.log(roleuser);
+          if(roleuser == "ROLE_DOCTOR"){
+            window.location.replace("doctordashboard.html");  
+          }
+          else{
+            window.location.replace("home.html");
+          }
         }
         else {
           // $('#loadMe').hide();

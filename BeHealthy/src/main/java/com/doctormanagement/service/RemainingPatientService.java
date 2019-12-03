@@ -20,10 +20,18 @@ public class RemainingPatientService {
 	@Autowired
 	RemainingPatientRepository remainingPatientRepository;
 	
-	public void addavailability(String dphonenumber) {
+	public void addavailability(String dphonenumber,String date,String number_of_patient) {
 		Doctor d = doctorRepository.findByPhonenumber(dphonenumber);
-		RemainingPatient r = new RemainingPatient(d.getPhonenumber(),nextDate(),d.getNumber_of_patient()); 
-		remainingPatientRepository.save(r);
+		RemainingPatient exist = remainingPatientRepository.findByDoctorphonenumberAndDate(dphonenumber, date);
+		RemainingPatient r = new RemainingPatient(d.getPhonenumber(),date,number_of_patient);
+		if(exist == null) {
+			remainingPatientRepository.save(r);	
+		}
+		else {
+			exist.setRemaining(number_of_patient);
+			remainingPatientRepository.save(exist);	
+		}
+		
 	}
 	
 	
