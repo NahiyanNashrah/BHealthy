@@ -13,67 +13,58 @@ request.onload = function () {
     data.forEach(doctorJSON => {
 
         const app = document.getElementById('doctorList')
+        const about = document.createElement('div')
+        about.setAttribute('class', 'about')
+        app.appendChild(about)
+        const container = document.createElement('div')
+        container.setAttribute('class', 'container')
+        about.appendChild(container)
         const row = document.createElement('div')
         row.setAttribute('class', 'row-lg-eq-height')
-        app.appendChild(row)
+        container.appendChild(row)
+
+        const about_image = document.createElement('div')
+        about_image.setAttribute('class', 'about_image')
+
+        const img = document.createElement('img')
+        img.src = doctorJSON.image;
+        about_image.appendChild(img)
+
+        row.appendChild(about_image);
+
         const info = document.createElement('div')
-        info.setAttribute('class', 'col-lg-7')
+        info.setAttribute('class', 'col-lg-9')
         row.appendChild(info)
 
-        const info_content = document.createElement('div')
-        info_content.setAttribute('class', 'info_content')
+        const about_text = document.createElement('div')
+        about_text.setAttribute('class', 'about_text')
+        info.appendChild(about_text)
+
         var doc_name = document.createElement('div')
         doc_name.setAttribute('class','doc_name')
         doc_name.textContent = doctorJSON.name;
-        info_content.appendChild(doc_name)
+        about_text.appendChild(doc_name)
 
         var doc_dept = document.createElement('div')
         doc_dept.setAttribute('class','doc_dept')
         doc_dept.textContent = doctorJSON.department;
-        info_content.appendChild(doc_dept)
+        about_text.appendChild(doc_dept)
 
         var doc_degree = document.createElement('div')
         doc_degree.setAttribute('class','doc_degree')
         doc_degree.textContent = doctorJSON.degree;
-        info_content.appendChild(doc_degree)
-
-        var doc_visiting = document.createElement('div')
-        doc_visiting.setAttribute('class','doc_visiting')
-        doc_visiting.textContent = doctorJSON.visiting_hour;
-        info_content.appendChild(doc_visiting)
-
-        var doc_location = document.createElement('div')
-        doc_location.setAttribute('class','doc_location')
-        doc_location.textContent = doctorJSON.location;
-        info_content.appendChild(doc_location)
-
-        var doc_fees = document.createElement('div')
-        doc_fees.setAttribute('class','doc_fees')
-        doc_fees.textContent = doctorJSON.fees;
-        info_content.appendChild(doc_fees)
+        about_text.appendChild(doc_degree)
 
         var btninfo = document.createElement('button')
-        btninfo.setAttribute('class','info_button')
+        btninfo.setAttribute('class','button about_button')
         btninfo.textContent = "See Details"
-        info_content.appendChild(btninfo)
-        info.appendChild(info_content)
-
-        const info_image = document.createElement('div')
-        info.setAttribute('class', 'col-lg-5')
-        info.appendChild(row)
-
-        const doc_Image = document.createElement('div')
-        doc_Image.setAttribute('class', 'doct_image')
-
-        const img = document.createElement('img')
-        img.src = doctorJSON.image;
-        doc_Image.appendChild(img)
-
-        row.appendChild(doc_Image);
+        about_text.appendChild(btninfo)
 
         app.appendChild(row)
+
         var hrr = document.createElement('hr')
         app.appendChild(hrr)
+
 
     })
 }
