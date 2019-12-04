@@ -53,12 +53,12 @@
                                   "confirm-password":confirmpassword,
                                   "degree":degree,
                                   "department":department,
-                                  "visiting-hour":visitinghour,
+                                  "visiting_hour":visitinghour ,
                                   "location":location,
-                                  "number-of-patients":number_of_patients,
-                                  "fees":fees,
+                                  "number_of_patients":number_of_patients,
+                                  "fee":fees,
                                   "phonenumber":phonenumber,
-                                  "role" : ['user','DOCTOR'] });
+                                  "role" : ['user','doctor'] });
           
 
           var response = xhr.response;
@@ -131,17 +131,17 @@
 
                         <div class="form">
                             <label class="label">number of patients :</label>
-                            <input type="number" class="input" id="number-of-patients" placeholder="">
+                            <input type="text" class="input" id="number-of-patients" placeholder="">
                         </div>
                     
                         <div class="form">
                             <label class="label">fees :</label>
-                            <input type="number" class="input" id="fees" placeholder="">
+                            <input type="text" class="input" id="fees" placeholder="">
                         </div>
 
                         <div class="form">
                             <label class="label">phone number :</label>
-                            <input type="number" class="input" id="phonenumber" placeholder="">
+                            <input type="text" class="input" id="phonenumber" placeholder="">
                         </div>
                     
                     

@@ -134,14 +134,16 @@ $(document).ready(function()
 			{
 				items:1,
 				loop:true,
-				autoplay:false,
-				autoplayTimeout:10000,
-				nav:false,
-				dots:false,
-				smartSpeed:1200,
-				onInitialized:startProgressBar,
-				onTranslate:resetProgressBar,
-				onTranslated:startProgressBar
+				autoplay:true,
+				smartSpeed: 2000,
+				autoplayTimeout:3000,
+				
+				// nav:false,
+				// dots:false,
+				// smartSpeed:1200,
+				// onInitialized:startProgressBar,
+				// onTranslate:resetProgressBar,
+				// onTranslated:startProgressBar
 			});
 
 			function startProgressBar()

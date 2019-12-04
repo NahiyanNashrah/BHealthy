@@ -1,13 +1,11 @@
 package com.doctormanagement.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +16,29 @@ public class PatientList {
 	private Long id;
 	
 	private String doctorphonenumber;
-	String patientname,patientphonenumber,date;
+	String patientname,patientphonenumber,date,serial;
+	
+	public PatientList(Long id, String doctorphonenumber, String patientname, String patientphonenumber, String date,
+			String serial) {
+		super();
+		this.id = id;
+		this.doctorphonenumber = doctorphonenumber;
+		this.patientname = patientname;
+		this.patientphonenumber = patientphonenumber;
+		this.date = date;
+		this.serial = serial;
+	}
+
+	public PatientList(String doctorphonenumber, String patientname, String patientphonenumber, String date,
+			String serial) {
+		super();
+		this.doctorphonenumber = doctorphonenumber;
+		this.patientname = patientname;
+		this.patientphonenumber = patientphonenumber;
+		this.date = date;
+		this.serial = serial;
+	}
+
 	public PatientList(Long listid, String dphonenumber, String patientname, String pphonenumber, String date) {
 		super();
 		this.id = listid;
@@ -68,6 +88,15 @@ public class PatientList {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
+	}
+	
 	
 	
 	 
