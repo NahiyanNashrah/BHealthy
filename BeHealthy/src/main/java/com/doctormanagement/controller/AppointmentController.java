@@ -2,6 +2,7 @@ package com.doctormanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class AppointmentController {
 	@Autowired
 	AppointmentService appiontmentService;
 	
+	@CrossOrigin
 	@PostMapping("/api/makeappointment")
 	@PreAuthorize("hasRole('PATIENT')")
 	public Boolean makeAppointment( @RequestBody PatientList patient) {

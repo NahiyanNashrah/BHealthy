@@ -206,18 +206,18 @@
       const password = document.getElementById("password").value;
 
       var myurl = backendurl + "api/auth/signin";
-      var $load = $("#loadMe").modal({
-        backdrop: "static", //remove ability to close modal with click
-        keyboard: false, //remove option to close with keyboard
-        show: true //Display loader!
-      });
-
+      // var $load = $("#loadMe").modal({
+      //   backdrop: "static", //remove ability to close modal with click
+      //   keyboard: false, //remove option to close with keyboard
+      //   show: true //Display loader!
+      // });
+      console.log(username + " jj " + password)
 
       var xhr = new XMLHttpRequest();
 
       var data;
 
-      xhr.open("POST", myurl, true);
+      xhr.open("POST", myurl, false);
       xhr.setRequestHeader("Content-Type", "application/json");
       data = JSON.stringify({ "phonenumber": username, "password": password });
       
@@ -226,13 +226,22 @@
           // Here we go on the new page
           var jsonResponse = JSON.parse(this.response);
           window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-          $("#loadMe").modal("hide");
+          // $("#loadMe").modal("hide");
           console.log(jsonResponse)
-          // window.location.replace("home.html");
+          var roleuser;
+          jsonResponse.authorities.forEach(doctorJSON => {
+            roleuser = doctorJSON.authority;
+          });
+          console.log(roleuser);
+          if(roleuser == "ROLE_DOCTOR"){
+            window.location.replace("doctordashboard.html");  
+          }
+          else{
+            window.location.replace("home.html");
+          }
         }
         else {
-
-          $('#loadMe').hide();
+          // $('#loadMe').hide();
           alert("Wrong Phone Number or Password");
         }
       };
@@ -246,8 +255,8 @@
     <div class="sub_container">
 
       <div class="form">
-        <label>Username :</label>
-        <input type="text" class="input" id="user-name" placeholder="Username">
+        <label>Phone Number :</label>
+        <input type="text" class="input" id="user-name" placeholder="Phone Number">
       </div>
 
       <div class="form">

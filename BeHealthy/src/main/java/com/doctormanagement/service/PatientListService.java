@@ -16,9 +16,9 @@ public class PatientListService {
 	@Autowired
 	private PatientListRepository listRepository;
 	
-	public List<PatientList>getAllPatient(String listId) {
+	public List<PatientList>getAllPatientByDateDoctor(String doctorPhonenumber,String date) {
 		List<PatientList> list = new ArrayList<>(); 
-		list = listRepository.findByDoctorphonenumber(listId)	;
+		list = listRepository.findByDoctorphonenumberAndDate(doctorPhonenumber,date)	;
 		return list;
 	}
 	
@@ -26,4 +26,9 @@ public class PatientListService {
 		listRepository.save(patient);
 		return true;
 	}
+	
+	public List<PatientList> getAllPatientUsingPhonenumber (String phonenumber){
+		return listRepository.findByPatientphonenumber(phonenumber);
+	}
+	
 }
