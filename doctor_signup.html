@@ -46,7 +46,21 @@
     
           xhr.open("POST", myurl, true);
           xhr.setRequestHeader("Content-Type", "application/json");
-          data = JSON.stringify({ "name": name, 
+          var formData = new FormData();
+                    var file = propic.files[0];
+                    
+                    if (propic.files.length == null) {
+                        alert('Please upload Image')
+                    }
+                    else if (password.value != confirmpassword.value) {
+                        alert("Password Not Matched")
+                        
+                    }
+                    else {
+                        formData.append("file", file);
+                        
+
+                        formData.append("doctor", new Blob([JSON.stringify({ "name": name, 
                                   "password": password,
 
                                   "email":email,
@@ -58,7 +72,10 @@
                                   "number_of_patients":number_of_patients,
                                   "fee":fees,
                                   "phonenumber":phonenumber,
-                                  "role" : ['user','doctor'] });
+                                  "role" : ['user','doctor']})], {
+                            type: "application/json",
+                            processData: false, contentType: false, cache: false
+                        }));
           
 
           var response = xhr.response;
@@ -76,7 +93,7 @@
               alert("Wrong Phone Number or Password");
             }
           };
-          xhr.send(data);
+          xhr.send(formData);
         }
       </script>
     <div class="container">
