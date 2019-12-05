@@ -13,9 +13,8 @@
 <body>
 
     <script>
-        function signup() {
-          // import jwt_decode from 'jwt-decode';
-    
+        function signup_doc() {
+         console.log("hi");
           const backendurl = "http://localhost:8181/";
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
@@ -45,14 +44,14 @@
           var data;
     
           xhr.open("POST", myurl, true);
-          xhr.setRequestHeader("Content-Type", "application/json");
+        //   xhr.setRequestHeader("Content-Type", "application/json");
           var formData = new FormData();
                     var file = propic.files[0];
                     
-                    if (propic.files.length == null) {
+                    if (file == null) {
                         alert('Please upload Image')
                     }
-                    else if (password.value != confirmpassword.value) {
+                    else if (password != confirmpassword) {
                         alert("Password Not Matched")
                         
                     }
@@ -64,7 +63,6 @@
                                   "password": password,
 
                                   "email":email,
-                                  "confirm-password":confirmpassword,
                                   "degree":degree,
                                   "department":department,
                                   "visiting_hour":visitinghour ,
@@ -76,6 +74,7 @@
                             type: "application/json",
                             processData: false, contentType: false, cache: false
                         }));
+
           
 
           var response = xhr.response;
@@ -95,6 +94,7 @@
           };
           xhr.send(formData);
         }
+    }
       </script>
     <div class="container">
         <div class="title">Create an account</div>
@@ -164,7 +164,7 @@
                     
                         <div class="reg">
                             <div class="button reg_btn">
-                                <a href="javascript: signup();">Register Now!</a></div>
+                                <a href="javascript:signup_doc();">Register Now!</a></div>
                             </div>
                         </div>
                 </div>
@@ -173,7 +173,7 @@
                 <div class="col-lg-4">
                     <div class="img_container">
                         <img src="images/profile_pic.png" alt="">
-                        <input type="file" accept="image/">
+                        <input type="file" accept="image/" id = "propic">
                     </div>
                 </div>
 
