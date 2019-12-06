@@ -56,7 +56,7 @@ request.onload = function () {
         var btninfo = document.createElement('div')
         btninfo.setAttribute('class', 'button about_button')
         var aref = document.createElement('a')
-        aref.setAttribute('href','#');
+        aref.setAttribute('href','doctor_profile.html?id='+doctorJSON.phonenumber);
         aref.textContent = "See Details"
         btninfo.appendChild(aref)
 

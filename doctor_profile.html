@@ -103,8 +103,8 @@
 			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
 				<div class="container  pull-left">
 					<div class="image_container"><img src="images/2.jpg"></div>
-					<div class="containter" id = "profile">
-					
+					<div class="containter" id="profile">
+
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 
 				var profile = document.getElementById('profile');
 				var namedoctor = document.createElement('div');
-				namedoctor.setAttribute('class','title');
+				namedoctor.setAttribute('class', 'title');
 				// name.textContent = 'hiiiii'
 				profile.appendChild(namedoctor);
 
@@ -129,12 +129,12 @@
 				var doctorlocation = document.createElement('div');
 				var visiting_hour = document.createElement('div');
 				var fee = document.createElement('div');
-				
-				department.setAttribute('class','title');
-				degree.setAttribute('class','title');
-				doctorlocation.setAttribute('class','title');
-				visiting_hour.setAttribute('class','title');
-				fee.setAttribute('class','title');
+
+				department.setAttribute('class', 'title');
+				degree.setAttribute('class', 'title');
+				doctorlocation.setAttribute('class', 'title');
+				visiting_hour.setAttribute('class', 'title');
+				fee.setAttribute('class', 'title');
 				profile.appendChild(department);
 				profile.appendChild(degree);
 				profile.appendChild(doctorlocation);
@@ -201,32 +201,44 @@
 
 		<script>
 			function make_appointment() {
-				var date = document.getElementById('datepicker').value;
-				var request = new XMLHttpRequest()
-
-				// Open a new connection, using the GET request on the URL endpoint
-				var data;
-				request.open("POST", "http://localhost:8181/api/makeappointment", false);
-				request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTk3MTQyOTU5MiIsImlhdCI6MTU3NDY3MDE2MywiZXhwIjoxNTc0NjcxMDYzfQ.Gl0E4Xo3oLBapxZtbOJEGWXhb3EbAAI1Y__gyOclZ3PLp7UHdom1uR3sKqYlgv8SxBswgUSZh0tG3g4IjuxS2Q")
-				request.setRequestHeader("Content-Type", "application/json");
-				// 			doctorphonenumber;
-				// String patientname,patientphonenumber,date
-				var id = getUrlVars()["id"];
-				data = JSON.stringify({ "doctorphonenumber": id, "patientname": "Nayeem", "patientphonenumber": "01971429592", "date": date });
-				request.onload = function () {
-					// Begin accessing JSON data here
-					if(this.status == 200){
-						alert("Appointment Accepted. Please present timely")
-					}	
-					else{
-						alert("No appointment possible today. Try different date or after few hour.")
-					}
-					var data = JSON.parse(this.response)
-					console.log(data)
+				if (window.localStorage.getItem('user') == null) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Login First to Make Appointment',
+						footer: '<a href = "login.html"><b>Login</b></a>'
+					})
+					// window.location.replace("signin.html");
 				}
+				else {
+					var date = document.getElementById('datepicker').value;
+					var request = new XMLHttpRequest()
+					var dataS = window.localStorage.getItem('user');
+					var dataJson = JSON.parse(dataS)
 
-				request.send(data);
+					// Open a new connection, using the GET request on the URL endpoint
+					var data;
+					request.open("POST", "http://localhost:8181/api/makeappointment", false);
+					request.setRequestHeader("Authorization", "Bearer "+dataJson)
+					request.setRequestHeader("Content-Type", "application/json");
+					// 			doctorphonenumber;
+					// String patientname,patientphonenumber,date
+					var id = getUrlVars()["id"];
+					data = JSON.stringify({ "doctorphonenumber": id, "patientname": "Nayeem", "patientphonenumber": "01971429592", "date": date });
+					request.onload = function () {
+						// Begin accessing JSON data here
+						if (this.status == 200) {
+							alert("Appointment Accepted. Please present timely")
+						}
+						else {
+							alert("No appointment possible today. Try different date or after few hour.")
+						}
+						var data = JSON.parse(this.response)
+						console.log(data)
+					}
 
+					request.send(data);
+				}
 
 			}
 		</script>
@@ -247,6 +259,7 @@
 	<script src="plugins/easing/easing.js"></script>
 	<script src="plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>
 
