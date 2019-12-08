@@ -1,16 +1,11 @@
 package com.doctormanagement.model;
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,18 +14,14 @@ public class Doctor {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
-	String phonenumber,email,password,name,fee,location,number_of_patient,visiting_hour,degree,department;
+	String phonenumber,email,password,name,fee,location,number_of_patient,visiting_hour,degree,department,image;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_roles", 
-	joinColumns = @JoinColumn(name = "user_id"), 
-	inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
 	
 	
 	public Doctor(Long id, String phonenumber, String email, String password, String name, String fee, String location,
-			String number_of_patient, String visiting_hour, String degree, String department) {
+			String number_of_patient, String visiting_hour, String degree, String department,String image) {
 		this.id = id;
+		this.image = image;
 		this.phonenumber = phonenumber;
 		this.email = email;
 		this.password = password;
@@ -45,9 +36,10 @@ public class Doctor {
 	
 	
 	public Doctor(String phonenumber, String email, String password, String name, String fee, String location,
-			String number_of_patient, String visiting_hour, String degree, String department) {
+			String number_of_patient, String visiting_hour, String degree, String department,String image) {
 		this.phonenumber = phonenumber;
 		this.email = email;
+		this.image = image;
 		this.password = password;
 		this.name = name;
 		this.fee = fee;
@@ -75,6 +67,16 @@ public class Doctor {
 
 	public String getPhonenumber() {
 		return phonenumber;
+	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 
@@ -173,12 +175,5 @@ public class Doctor {
 	}
 
 
-	public Set<Role> getRoles() {
-	        return roles;
-	    }
-	 
-	    public void setRoles(Set<Role> roles) {
-	        this.roles = roles;
-	    }
 
 }
