@@ -26,12 +26,12 @@ public class PatientListController {
 	@RequestMapping("/api/patient_list/{doctorPhonenumber}")
 	@PreAuthorize("hasRole('DOCTOR')")
 	public List<PatientList> getAllPatient(@PathVariable String doctorPhonenumber){
-		SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
-    	Date date = new Date(System.currentTimeMillis());
-    	final Calendar calendar = Calendar.getInstance();
-    	calendar.setTime(date);
-    	String date1 = formatter.format(calendar.getTime());
-		return listService.getAllPatientByDateDoctor(doctorPhonenumber,date1);
+//		SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
+//    	Date date = new Date(System.currentTimeMillis());
+//    	final Calendar calendar = Calendar.getInstance();
+//    	calendar.setTime(date);
+//    	String date1 = formatter.format(calendar.getTime());
+		return listService.getAllPatientByDateDoctor(doctorPhonenumber,"19-12-2019");
 		
 	}
 }

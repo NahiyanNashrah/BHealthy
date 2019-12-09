@@ -13,9 +13,8 @@
 <body>
 
     <script>
-        function signup() {
-          // import jwt_decode from 'jwt-decode';
-    
+        function signup_doc() {
+         console.log("hi");
           const backendurl = "http://localhost:8181/";
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
@@ -45,20 +44,37 @@
           var data;
     
           xhr.open("POST", myurl, true);
-          xhr.setRequestHeader("Content-Type", "application/json");
-          data = JSON.stringify({ "name": name, 
+        //   xhr.setRequestHeader("Content-Type", "application/json");
+          var formData = new FormData();
+                    var file = propic.files[0];
+                    
+                    if (file == null) {
+                        alert('Please upload Image')
+                    }
+                    else if (password != confirmpassword) {
+                        alert("Password Not Matched")
+                        
+                    }
+                    else {
+                        formData.append("file", file);
+                        
+
+                        formData.append("doctor", new Blob([JSON.stringify({ "name": name, 
                                   "password": password,
 
                                   "email":email,
-                                  "confirm-password":confirmpassword,
                                   "degree":degree,
                                   "department":department,
                                   "visiting_hour":visitinghour ,
                                   "location":location,
-                                  "number_of_patients":number_of_patients,
+                                  "number_of_patient":number_of_patients,
                                   "fee":fees,
                                   "phonenumber":phonenumber,
-                                  "role" : ['user','doctor'] });
+                                  "role" : ['user','doctor']})], {
+                            type: "application/json",
+                            processData: false, contentType: false, cache: false
+                        }));
+
           
 
           var response = xhr.response;
@@ -76,8 +92,9 @@
               alert("Wrong Phone Number or Password");
             }
           };
-          xhr.send(data);
+          xhr.send(formData);
         }
+    }
       </script>
     <div class="container">
         <div class="title">Create an account</div>
@@ -147,7 +164,7 @@
                     
                         <div class="reg">
                             <div class="button reg_btn">
-                                <a href="javascript: signup();">Register Now!</a></div>
+                                <a href="javascript:signup_doc();">Register Now!</a></div>
                             </div>
                         </div>
                 </div>
@@ -156,7 +173,7 @@
                 <div class="col-lg-4">
                     <div class="img_container">
                         <img src="images/profile_pic.png" alt="">
-                        <input type="file" accept="image/">
+                        <input type="file" accept="image/" id = "propic">
                     </div>
                 </div>
 
