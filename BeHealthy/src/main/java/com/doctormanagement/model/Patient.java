@@ -1,36 +1,25 @@
 package com.doctormanagement.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "patient")
 public class Patient {
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	String phonenumber,email,password,weight,name,bloodgroup,gender,address,image;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_roles", 
-	joinColumns = @JoinColumn(name = "user_id"), 
-	inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	String phonenumber, email, password, weight, name, bloodgroup, gender, address, image;
+
 	int age;
+
 	public Patient(Long id, String phonenumber, String email, String password, String weight, String name,
-			String bloodgroup, String gender, String address, int age,String image) {
+			String bloodgroup, String gender, String address, int age, String image) {
 //		super();
 		this.id = id;
 		this.phonenumber = phonenumber;
@@ -42,9 +31,11 @@ public class Patient {
 		this.gender = gender;
 		this.address = address;
 		this.age = age;
+		this.image = image;
 	}
-	public Patient( String phonenumber, String email, String password, String weight, String name,
-			String bloodgroup, String gender, String address, int age,String image) {
+
+	public Patient(String phonenumber, String email, String password, String weight, String name, String bloodgroup,
+			String gender, String address, int age, String image) {
 //		super();
 //		this.id = id;
 		this.phonenumber = phonenumber;
@@ -56,81 +47,99 @@ public class Patient {
 		this.gender = gender;
 		this.address = address;
 		this.age = age;
+		this.image = image;
 	}
+
 	public Patient() {
 		super();
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getPhonenumber() {
 		return phonenumber;
 	}
+
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getWeight() {
 		return weight;
 	}
+
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getBloodgroup() {
 		return bloodgroup;
 	}
+
 	public void setBloodgroup(String bloodgroup) {
 		this.bloodgroup = bloodgroup;
 	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	 public Set<Role> getRoles() {
-	        return roles;
-	    }
-	 
-	    public void setRoles(Set<Role> roles) {
-	        this.roles = roles;
-	    }
-	
-	
-	
-	
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }

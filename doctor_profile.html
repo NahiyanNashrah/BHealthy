@@ -21,6 +21,8 @@
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<!-- <link rel="stylesheet" type="text/css" href="styles/main_styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="styles/home.css">
 </head>
 
 <body>
@@ -40,12 +42,68 @@
 								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
 								<div
 									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
-									<a href="sign_up.html">Register</a></div>
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a
-										href="#">Login</a></div>
+									<a href="#con" id="register">Register</a>
+									<div id="con">
+										<h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
+										<h4><input type="radio" name="role" value="0" /> As a Patient</h4>
+									</div>
+									<script>
+										$('input:radio[name="role"]').change(
+											function () {
+												if ($(this).is(':checked') && $(this).val() == '1') {
+													window.location = "doctor_signup.html";
+												}
+												else {
+													window.location = "sign_up.html";
+												}
+											});
+									</script>
+								</div>
+
+								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
+										id="login">Login</a></div>
+
+
+								<div class="dropdown" id="menu">
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+										id="dropdown">hello
+										<span class="caret"></span></button>
+									<ul class="dropdown-content">
+										<li><a href="#">HTML</a></li>
+										<li><a href="#">CSS</a></li>
+										<li><a href="#">JavaScript</a></li>
+									</ul>
+
+								</div>
+								<script>
+
+
+									if (window.localStorage.getItem('user') == null) {
+										document.getElementById('register').style.display = "block";
+										document.getElementById('login').style.display = "block";
+										document.getElementById('menu').style.display = "none";
+
+
+									}
+									else {
+										document.getElementById('register').style.display = "none";
+										document.getElementById('login').style.display = "none";
+										document.getElementById('menu').style.display = "block";
+
+										var data = window.localStorage.getItem('user');
+										var obj = JSON.parse(data);
+
+
+										document.getElementById('dropdown').innerHTML = obj.name;
+
+									}
+								</script>
+
+
+								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id="username"><a
+										href="login.html" style="display:none;">Nayeem</a></div>
+
 							</div>
-
-
 						</div>
 					</div>
 				</div>
@@ -103,8 +161,8 @@
 			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
 				<div class="container  pull-left">
 					<div class="image_container"><img src="images/2.jpg"></div>
-					<div class="containter" id = "profile">
-					
+					<div class="containter" id="profile">
+
 					</div>
 				</div>
 			</div>
@@ -120,7 +178,7 @@
 
 				var profile = document.getElementById('profile');
 				var namedoctor = document.createElement('div');
-				namedoctor.setAttribute('class','title');
+				namedoctor.setAttribute('class', 'title');
 				// name.textContent = 'hiiiii'
 				profile.appendChild(namedoctor);
 
@@ -129,12 +187,12 @@
 				var doctorlocation = document.createElement('div');
 				var visiting_hour = document.createElement('div');
 				var fee = document.createElement('div');
-				
-				department.setAttribute('class','title');
-				degree.setAttribute('class','title');
-				doctorlocation.setAttribute('class','title');
-				visiting_hour.setAttribute('class','title');
-				fee.setAttribute('class','title');
+
+				department.setAttribute('class', 'title');
+				degree.setAttribute('class', 'title');
+				doctorlocation.setAttribute('class', 'title');
+				visiting_hour.setAttribute('class', 'title');
+				fee.setAttribute('class', 'title');
 				profile.appendChild(department);
 				profile.appendChild(degree);
 				profile.appendChild(doctorlocation);
@@ -179,7 +237,8 @@
 					<input id="datepicker" width="276" />
 					<script>
 						$('#datepicker').datepicker({
-							uiLibrary: 'bootstrap4'
+							uiLibrary: 'bootstrap4',
+							format: 'dd-mm-yyyy'
 						});
 					</script>
 
@@ -197,32 +256,45 @@
 
 		<script>
 			function make_appointment() {
-				var date = document.getElementById('datepicker').value;
-				var request = new XMLHttpRequest()
-
-				// Open a new connection, using the GET request on the URL endpoint
-				var data;
-				request.open("POST", "http://localhost:8181/api/makeappointment", false);
-				request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTk3MTQyOTU5MiIsImlhdCI6MTU3NDY3MDE2MywiZXhwIjoxNTc0NjcxMDYzfQ.Gl0E4Xo3oLBapxZtbOJEGWXhb3EbAAI1Y__gyOclZ3PLp7UHdom1uR3sKqYlgv8SxBswgUSZh0tG3g4IjuxS2Q")
-				request.setRequestHeader("Content-Type", "application/json");
-				// 			doctorphonenumber;
-				// String patientname,patientphonenumber,date
-				var id = getUrlVars()["id"];
-				data = JSON.stringify({ "doctorphonenumber": id, "patientname": "Nayeem", "patientphonenumber": "01971429592", "date": date });
-				request.onload = function () {
-					// Begin accessing JSON data here
-					if(this.status == 200){
-						alert("Appointment Accepted. Please present timely")
-					}	
-					else{
-						alert("No appointment possible today. Try different date or after few hour.")
-					}
-					var data = JSON.parse(this.response)
-					console.log(data)
+				if (window.localStorage.getItem('user') == null) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Login First to Make Appointment',
+						footer: '<a href = "login.html"><b>Login</b></a>'
+					})
+					// window.location.replace("signin.html");
 				}
+				else {
+					var date = document.getElementById('datepicker').value;
+					var request = new XMLHttpRequest()
+					var dataS = window.localStorage.getItem('user');
+					var dataJson = JSON.parse(dataS)
+					console.log(date)
+					// Open a new connection, using the GET request on the URL endpoint
+					var data;
+					request.open("POST", "http://localhost:8181/api/makeappointment", false);
+					request.setRequestHeader("Authorization", "Bearer "+dataJson.accessToken);
+					request.setRequestHeader("Content-Type", "application/json");
+					// 			doctorphonenumber;
+					// String patientname,patientphonenumber,date
+					var id = getUrlVars()["id"];
+					data = JSON.stringify({ "doctorphonenumber": id, "patientname": dataJson.name, "patientphonenumber": dataJson.phonenumber, "date": date });
+					request.onload = function () {
+						// Begin accessing JSON data here
+						if (this.status == 200) {
+							alert("Appointment Accepted. Please present timely")
+							window.location.replace("home.html")
+						}
+						else {
+							alert("No appointment possible today. Try different date or after few hour.")
+						}
+						var data = JSON.parse(this.response)
+						console.log(data)
+					}
 
-				request.send(data);
-
+					request.send(data);
+				}
 
 			}
 		</script>
@@ -243,6 +315,7 @@
 	<script src="plugins/easing/easing.js"></script>
 	<script src="plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>
 
