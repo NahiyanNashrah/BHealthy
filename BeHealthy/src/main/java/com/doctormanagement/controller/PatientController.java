@@ -19,6 +19,7 @@ public class PatientController {
 	
 	@CrossOrigin
 	@RequestMapping("api/auth/single_patient/{phonenumber}")
+	@PreAuthorize("hasRole('PATIENT')")
 	public Patient getProfile(@PathVariable String phonenumber) {
 		return patientRepository.findByPhonenumber(phonenumber);
 	}
