@@ -19,15 +19,19 @@ request.onload = function () {
         var image_div = document.createElement('div');
         image_div.setAttribute('class','col-lg-3');
 
+        const info_image = document.createElement('div')
+        info_image.setAttribute('class', 'col-lg-3')
+        row.appendChild(info_image)
         const about_image = document.createElement('div')
         about_image.setAttribute('class', 'about_image')
+
 
         const img = document.createElement('img')
         img.src = "images/about.png";
         about_image.appendChild(img)
 
-        image_div.appendChild(about_image);
-        row.appendChild(image_div)
+
+
 
         const info = document.createElement('div')
         info.setAttribute('class', 'col-lg-9')
@@ -53,6 +57,7 @@ request.onload = function () {
         about_text.appendChild(doc_degree)
         info.appendChild(about_text)
 
+
         var btninfo = document.createElement('div')
         btninfo.setAttribute('class', 'button about_button')
         var aref = document.createElement('a')
@@ -62,6 +67,7 @@ request.onload = function () {
 
         info.appendChild(btninfo)
         row.appendChild(info)
+
 
         var hrr = document.createElement('div');
         hrr.setAttribute('class','doct_line')

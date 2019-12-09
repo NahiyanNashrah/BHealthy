@@ -199,14 +199,10 @@
 				profile.appendChild(visiting_hour);
 				profile.appendChild(fee);
 
-
-
-
-
-
 				var id = getUrlVars()["id"];
 
 				var url = "http://localhost:8181/api/auth/single_doctor/" + id;
+
 
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
