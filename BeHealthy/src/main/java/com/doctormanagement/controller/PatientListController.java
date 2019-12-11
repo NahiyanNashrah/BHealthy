@@ -23,15 +23,15 @@ public class PatientListController {
 	private PatientListService listService;
 	
 	@CrossOrigin
-	@RequestMapping("/api/patient_list/{doctorPhonenumber}")
+	@RequestMapping("/api/patient_list/{doctorPhonenumber}/{date}")
 	@PreAuthorize("hasRole('DOCTOR')")
-	public List<PatientList> getAllPatient(@PathVariable String doctorPhonenumber){
+	public List<PatientList> getAllPatient(@PathVariable String doctorPhonenumber,@PathVariable String date){
 //		SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
 //    	Date date = new Date(System.currentTimeMillis());
 //    	final Calendar calendar = Calendar.getInstance();
 //    	calendar.setTime(date);
 //    	String date1 = formatter.format(calendar.getTime());
-		return listService.getAllPatientByDateDoctor(doctorPhonenumber,"19-12-2019");
+		return listService.getAllPatientByDateDoctor(doctorPhonenumber,date);
 		
 	}
 }

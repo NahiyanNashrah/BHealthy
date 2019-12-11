@@ -63,10 +63,16 @@
 									<ul class="dropdown-content">
 										<li><a href="#">HTML</a></li>
 										<li><a href="#">CSS</a></li>
-										<li><a href="#">JavaScript</a></li>
+										<li><a href="javascript: logout()">Logout</a></li>
 									</ul>
 
 								</div>
+								<script>
+									function logout() {
+										window.localStorage.clear();
+										window.location.replace("home.html");
+									}
+								</script>
 								<script>
 
 
