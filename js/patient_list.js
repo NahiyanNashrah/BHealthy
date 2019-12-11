@@ -24,6 +24,7 @@ function patientlist() {
 
                 var tableAppointment = document.getElementById('patientList');
                 var tablerow = document.createElement('tr');
+                tablerow.style.cursor = "pointer"
                 var serial = document.createElement('td');
                 var serialtxt = document.createTextNode(u.serial);
                 serial.appendChild(serialtxt);
@@ -43,7 +44,7 @@ function patientlist() {
 
 
                 tablerow.addEventListener('click', function () {
-                    alert("clicked")
+                    window.location.replace("my_prescription.html?id = "+u.patientphonenumber);
                 });
                 tableAppointment.appendChild(tablerow)
 

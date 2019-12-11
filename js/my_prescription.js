@@ -1,8 +1,23 @@
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+var id = getUrlVars()["id"];
+
+var token;
+var data = window.localStorage.getItem('user');
+dataJson = JSON.parse(data);
+token = dataJson.accessToken;
+
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/api/get-prescrption/01971429592', true)
-request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTk3MTQyOTU5MiIsImlhdCI6MTU3MzMyNzE0MSwiZXhwIjoxNTczMzI4MDQxfQ.6O0CttauYGXElg1KW0J1j-CJR30Xn_FMDCea3qzDQQr4wVme3BklUI_gAvuL3Pb3hP6BvVJS-BOpcZ2A0b94rw");
+request.open('GET', 'http://localhost:8181/api/get-prescrption/'+id, true)
+request.setRequestHeader("Authorization", "Bearer "+token);
 
 request.onload = function () {
     // Begin accessing JSON data here
