@@ -30,7 +30,6 @@
             content: "\e080";
         }
 
-
         #appointment {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
             border-collapse: collapse;
@@ -52,6 +51,34 @@
         }
 
         #appointment th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #pappointment {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #pappointment td,
+        #pappointment th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #pappointment tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #pappointment tr:hover {
+            background-color: #ddd;
+        }
+
+        #pappointment th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
@@ -84,7 +111,7 @@
                                         <h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
                                         <h4><input type="radio" name="role" value="0" /> As a Patient</h4>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a
                                         href="#">Login</a></div>
@@ -157,74 +184,225 @@
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
-                        
+
                         <table id="appointment">
-                                <tr>
-                                  <th>Serial No.</th>
-                                  <th>Doctor Name</th>
-                                  <th>Location</th>
-                                  <th>Visiting Hour ( Start time )</th>
-                                </tr>
-                                <script>
-                                    var tableAppointment = document.getElementById('appointment');
-                                    var tablerow = document.createElement('tr');
-                                    var serial = document.createElement('td');
-                                    var serialtxt = document.createTextNode("2");
-                                    serial.appendChild(serialtxt);
-                                    tablerow.appendChild(serial);
-                                    
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Date</th>
+                                <th>Doctor Name</th>
+                                <th>Location</th>
+                                <th>Visiting Hour ( Start time )</th>
+                            </tr>
+                            <script>
 
-                                    var docname = document.createElement('td');
-                                    var docnametxt = document.createTextNode("Dr.Mohammmed Mohosin")
-                                    docname.appendChild(docnametxt);
-                                    tablerow.appendChild(docname);
-                                    
+                                var today = new Date();
+                                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-                                    var locationD = document.createElement('td');
-                                    var locationtxt = document.createTextNode("Shantinagar");
-                                    locationD.appendChild(locationtxt);
-                                    tablerow.appendChild(locationD);
-                                    
-                                    var vis = document.createElement('td');
-                                    var vishour = document.createTextNode("10 a.m.");
-                                    vis.appendChild(vishour);
-                                    tablerow.appendChild(vis);
-                                    tableAppointment.appendChild(tablerow)
+                                var currentdate = Date.parse(date);
+                                console.log(date)
 
 
-                                </script>                           
-                              </table>
-                              
-                       
+                                var url = "http://localhost:8181/api/getallserial/01971429592";
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", url, false);
+                                var data;
+                                data = JSON.parse(window.localStorage.getItem('user'));
+                                token = data.accessToken;
+                                console.log(token)
 
-                    
+                                xhr.setRequestHeader("Authorization", "Bearer " + token);
+                                xhr.onload = function () {
+                                    if (this.status == 200) {
+                                        var data1 = JSON.parse(this.response)
+                                        data1.forEach(dataJSON => {
+                                            // var dataJSON = JSON.parse(this.response);
 
-                </div>
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="colpsible-panel" data-toggle="collapse" data-parent="#accordion"
-                                href="#collapseTwo">
-                                Previous Appointment
-                            </a>
-                        </h4>
+                                            // var a = Date.parse("2012-11-04");
+                                            // if (d1 < d2) {
+                                            //     alert("Error!");
+                                            // }
+                                            var today = new Date();
+                                            var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+                                            var currentdates = date.split('-')
+                                            var currentdateval = Number(currentdates[2] + currentdates[1] + currentdates[0]);
+                                            
+
+                                            var apdate = dataJSON.date;
+                                            var apdates = apdate.split('-');
+                                            var apdateval = Number(apdates[2] + apdates[1] + apdates[0]);
+                                            
+                                            
+                                            console.log(currentdateval + '---88888----' + apdateval)
+                                            if(currentdateval<=apdateval){
+                                                var tableAppointment = document.getElementById('appointment');
+                                            var tablerow = document.createElement('tr');
+                                            var serial = document.createElement('td');
+                                            var serialtxt = document.createTextNode(dataJSON.serial);
+                                            serial.appendChild(serialtxt);
+                                            tablerow.appendChild(serial);
+
+                                            var dateD = document.createElement('td');
+                                            var datetxt = document.createTextNode(dataJSON.date);
+                                            dateD.appendChild(datetxt);
+                                            tablerow.appendChild(dateD)
+
+                                            var docname = document.createElement('td');
+                                            var docnametxt = document.createTextNode(dataJSON.doctorname)
+                                            docname.appendChild(docnametxt);
+                                            tablerow.appendChild(docname);
+
+
+                                            var locationD = document.createElement('td');
+                                            var locationtxt = document.createTextNode(dataJSON.location);
+                                            locationD.appendChild(locationtxt);
+                                            tablerow.appendChild(locationD);
+
+
+
+                                            var vis = document.createElement('td');
+                                            var vishour = document.createTextNode(dataJSON.visiting_time);
+                                            vis.appendChild(vishour);
+                                            tablerow.appendChild(vis);
+                                            tableAppointment.appendChild(tablerow)
+                                            }
+                                        })
+
+
+
+                                    }
+                                    else {
+                                        alert("HI")
+                                    }
+
+                                };
+                                xhr.send();
+
+
+
+                            </script>
+                        </table>
+
+
+
+
+
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            The panel content comes here where you may use text, images and even videos. You may also
-                            place
-                            HTML tables, list etc here.
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="colpsible-panel" data-toggle="collapse" data-parent="#accordion"
+                                    href="#collapseTwo">
+                                    Previous Appointment
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                                <table id="pappointment">
+                                        <tr>
+                                            <th>Serial No.</th>
+                                            <th>Date</th>
+                                            <th>Doctor Name</th>
+                                            <th>Location</th>
+                                            <th>Visiting Hour ( Start time )</th>
+                                        </tr>
+                                        <script>
+
+                                                var today = new Date();
+                                                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                
+                                                var currentdate = Date.parse(date);
+                                                console.log(date)
+                
+                
+                                                var url = "http://localhost:8181/api/getallserial/01971429592";
+                                                var xhr = new XMLHttpRequest();
+                                                xhr.open("GET", url, false);
+                                                var data;
+                                                data = JSON.parse(window.localStorage.getItem('user'));
+                                                token = data.accessToken;
+                                                console.log(token)
+                
+                                                xhr.setRequestHeader("Authorization", "Bearer " + token);
+                                                xhr.onload = function () {
+                                                    if (this.status == 200) {
+                                                        var data1 = JSON.parse(this.response)
+                                                        data1.forEach(dataJSON => {
+                                                            // var dataJSON = JSON.parse(this.response);
+                
+                                                            // var a = Date.parse("2012-11-04");
+                                                            // if (d1 < d2) {
+                                                            //     alert("Error!");
+                                                            // }
+                                                            var today = new Date();
+                                                            var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+                                                            var currentdates = date.split('-')
+                                                            var currentdateval = Number(currentdates[2] + currentdates[1] + currentdates[0]);
+                                                            
+                
+                                                            var apdate = dataJSON.date;
+                                                            var apdates = apdate.split('-');
+                                                            var apdateval = Number(apdates[2] + apdates[1] + apdates[0]);
+                                                            
+                                                            
+                                                            console.log(currentdateval + '---88888----' + apdateval)
+                                                            if(currentdateval>apdateval){
+                                                                var tableAppointment = document.getElementById('pappointment');
+                                                            var tablerow = document.createElement('tr');
+                                                            var serial = document.createElement('td');
+                                                            var serialtxt = document.createTextNode(dataJSON.serial);
+                                                            serial.appendChild(serialtxt);
+                                                            tablerow.appendChild(serial);
+                
+                                                            var dateD = document.createElement('td');
+                                                            var datetxt = document.createTextNode(dataJSON.date);
+                                                            dateD.appendChild(datetxt);
+                                                            tablerow.appendChild(dateD)
+                
+                                                            var docname = document.createElement('td');
+                                                            var docnametxt = document.createTextNode(dataJSON.doctorname)
+                                                            docname.appendChild(docnametxt);
+                                                            tablerow.appendChild(docname);
+                
+                
+                                                            var locationD = document.createElement('td');
+                                                            var locationtxt = document.createTextNode(dataJSON.location);
+                                                            locationD.appendChild(locationtxt);
+                                                            tablerow.appendChild(locationD);
+                
+                
+                
+                                                            var vis = document.createElement('td');
+                                                            var vishour = document.createTextNode(dataJSON.visiting_time);
+                                                            vis.appendChild(vishour);
+                                                            tablerow.appendChild(vis);
+                                                            tableAppointment.appendChild(tablerow)
+                                                            }
+                                                        })
+                
+                
+                
+                                                    }
+                                                    else {
+                                                        alert("HI")
+                                                    }
+                
+                                                };
+                                                xhr.send();
+                
+                
+                
+                                            </script>
+                                </table>
                         </div>
                     </div>
-                </div>
 
 
-            </div> <!-- end container -->
+                </div> <!-- end container -->
 
-        </div>
+            </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 
 </html>

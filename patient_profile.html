@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/home.css">
 	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -100,13 +102,20 @@
 
 		<div class="col-md-10  containter">
 
-			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
-				<div class="container  pull-left">
+			<div class="container  col-md-5" style="margin-top: 210px; margin-left: 600px;">
+				<div class="container  ">
 					<div class="image_container"><img src="images/2.jpg"></div>
 					<div class="containter" id = "profile">
 					
 					</div>
+
+					<div class="button login_btn" style="margin-top: 30px;">
+                            <a href="javascript: addprescription();"> Edit Profile</a></div>
+
 				</div>
+			</div>
+			<div style="margin-top: 100px;">
+
 			</div>
 
 			<script>
@@ -147,21 +156,26 @@
 
 				var id = getUrlVars()["id"];
 
-				var url = "http://localhost:8181/api/auth/single_doctor/" + id;
+				var url = "http://localhost:8181/api/auth/single_patient/" + id;
 
 
 				var xhr = new XMLHttpRequest();
-				xhr.open("GET", url, true);
+				xhr.open("GET", url, false);
+				var data;
+				data = JSON.parse(window.localStorage.getItem('user'));
+				token = data.accessToken;
+				console.log(token)
+				xhr.setRequestHeader("Authorization", "Bearer " +token);
 				xhr.onload = function () {
 					if (this.status == 200) {
-						console.log(this.response);
-						var dataJSON = JSON.parse(this.response)
-						console.log(dataJSON);
+						// console.log(this.response);
+						var dataJSON = JSON.parse(this.response);
+						console.log(JSON.stringify(this.response));
 
 						namepatient.textContent = "Name :    " + dataJSON.name;
 						age.textContent = "Age :    " + dataJSON.age;
 						gender.textContent = "Gender :    " + dataJSON.gender;
-						blood_group.textContent = "Blood Group :     " + dataJSON.blood_group;
+						blood_group.textContent = "Blood Group :     " + dataJSON.bloodgroup;
 						weight.textContent = "Weight :     " + dataJSON.weight;
                         address.textContent = "Address :    " + dataJSON.address;
                         phonenumber.textContent = "Contact Number :    " + dataJSON.phonenumber;
@@ -169,6 +183,9 @@
 
 
 
+					}
+					else{
+						alert("HI")
 					}
 				};
 				xhr.send();
@@ -184,7 +201,65 @@
 	</div>
 
 	</div>
-
+	<footer class="footer-area section_gap">
+			<div class="container">
+			  <div class="row">
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Products</h4>
+				  <ul>
+					<ul>
+					  <li><a href="category.html?category=Electronics">Electronics</a></li>
+					  <li><a href="ategory.html?category=Furniture">Furniture</a></li>
+					  <li><a href="category.html?category=Mobile">Smart Phone</a></li>
+					  <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+					  <li><a href="category.html?category=Kids">Kids Collection</a></li>
+					  <li><a href="category.html?category=Cosmatics">Cosmectics Collection</a></li>
+					</ul>
+				  </ul>
+				</div>
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4>Quick Links</h4>
+				  <ul>
+					<li><a href="#new_product">New Products</a></li>
+					<li><a href="#featured_product">Featured Product</a></li>
+		
+					<li><a href="#inspired_product">Inspired Product</a></li>
+				  </ul>
+				</div>
+		
+				<div class="col-lg-2 col-md-6 single-footer-widget">
+				  <h4> Top Products</h4>
+				  <ul>
+					<li><a href="category.html?category=Electronics">Electronics</a></li>
+					<li><a href="ategory.html?category=Furniture">Furniture</a></li>
+					<li><a href="category.html?category=Mobile">Smart Phone</a></li>
+					<li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+					<li><a href="category.html?category=Kids">Kids Collection</a></li>
+				  </ul>
+				</div>
+				<div class="col-lg-3 col-md-7 single-footer-widget ml-auto ">
+				  <h4>Contacts</h4>
+				  <ul>
+					<li style="color: white;">Polash Ahmed</li>
+					<li style="color: gray;">Mobile No. +8801857763383</li>
+					<li style="color: white;">Rafi Hasib</li>
+					<li style="color: gray;">Mobile No. +8801850385455</li>
+		
+				  </ul>
+				</div>
+		
+			  </div>
+			  <div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-8 col-md-12">
+				  Site Developed & Managed By: Raihan Ullah, SWE, SUST.
+				</p>
+		
+			  </div>
+			</div>
+		  </footer>
+		  <!--================ End footer Area  =================-->
+		
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="styles/bootstrap4/popper.js"></script>
 	<script src="styles/bootstrap4/bootstrap.min.js"></script>
