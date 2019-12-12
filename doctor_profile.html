@@ -33,134 +33,144 @@
 
 		<header class="header trans_200">
 
-			<!-- Top Bar -->
-			<div class="top_bar">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
-								<div
-									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
-									<a href="#con" id="register">Register</a>
-									<div id="con">
-										<h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
-										<h4><input type="radio" name="role" value="0" /> As a Patient</h4>
+				<!-- Top Bar -->
+				<div class="top_bar">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+									<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
+									<div
+										class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
+										<a href="#con" id="register">Register</a>
+										<div id="con">
+											<h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
+											<h4><input type="radio" name="role" value="0" /> As a Patient</h4>
+										</div>
+										<script>
+											$('input:radio[name="role"]').change(
+												function () {
+													if ($(this).is(':checked') && $(this).val() == '1') {
+														window.location = "doctor_signup.html";
+													}
+													else {
+														window.location = "sign_up.html";
+													}
+												});
+										</script>
+									</div>
+	
+									<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
+											id="login">Login</a></div>
+	
+	
+									<div class="dropdown" id="menu">
+										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+											id="dropdown">hello
+											<span class="caret"></span></button>
+										<ul class="dropdown-content">
+											<li><a href="patient_profile.html">My Profile</a></li>
+	
+											<li><a id="my_prescription">My Prescription</a></li>
+											<li><a href="addprescription.html">ADD Prescription</a></li>
+											<li><a href="myappointment.html">Track My Appointment</a></li>
+											<li><a href="javascript: logout()">Logout</a></li>
+										</ul>
+	
 									</div>
 									<script>
-										$('input:radio[name="role"]').change(
-											function () {
-												if ($(this).is(':checked') && $(this).val() == '1') {
-													window.location = "doctor_signup.html";
-												}
-												else {
-													window.location = "sign_up.html";
-												}
-											});
+										function logout() {
+											window.localStorage.clear();
+											window.location.replace("home.html");
+										}
 									</script>
+									<script>
+	
+	
+										if (window.localStorage.getItem('user') == null) {
+											document.getElementById('register').style.display = "block";
+											document.getElementById('login').style.display = "block";
+											document.getElementById('menu').style.display = "none";
+	
+	
+										}
+										else {
+											document.getElementById('register').style.display = "none";
+											document.getElementById('login').style.display = "none";
+											document.getElementById('menu').style.display = "block";
+	
+											var data = window.localStorage.getItem('user');
+											var obj = JSON.parse(data);
+	
+	
+											document.getElementById('dropdown').innerHTML = obj.name;
+											var my_prescription = document.getElementById("my_prescription");
+											my_prescription.setAttribute('href', "my_prescription.html?id=" + obj.phonenumber)
+	
+										}
+									</script>
+	
+	
+									<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id="username"><a
+											href="login.html" style="display:none;">Nayeem</a></div>
+	
 								</div>
-
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
-										id="login">Login</a></div>
-
-
-								<div class="dropdown" id="menu">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
-										id="dropdown">hello
-										<span class="caret"></span></button>
-									<ul class="dropdown-content">
-										<li><a href="#">HTML</a></li>
-										<li><a href="#">CSS</a></li>
-										<li><a href="#">JavaScript</a></li>
-									</ul>
-
-								</div>
-								<script>
-
-
-									if (window.localStorage.getItem('user') == null) {
-										document.getElementById('register').style.display = "block";
-										document.getElementById('login').style.display = "block";
-										document.getElementById('menu').style.display = "none";
-
-
-									}
-									else {
-										document.getElementById('register').style.display = "none";
-										document.getElementById('login').style.display = "none";
-										document.getElementById('menu').style.display = "block";
-
-										var data = window.localStorage.getItem('user');
-										var obj = JSON.parse(data);
-
-
-										document.getElementById('dropdown').innerHTML = obj.name;
-
-									}
-								</script>
-
-
-								<div class="top_bar_item_logIn  d-flex flex-row align-items-center" id="username"><a
-										href="login.html" style="display:none;">Nayeem</a></div>
-
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<!-- Header Content -->
-			<div class="header_container">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="header_content d-flex flex-row align-items-center justify-content-start">
-								<nav class="main_nav ml-auto">
-									<ul>
-										<li><a href="home.html">Home</a></li>
-										<li><a href="department.html">Department</a></li>
-										<li><a href="home.html">Doctor</a></li>
-										<li><a href="about.html">About us</a></li>
-										<li><a href="contact.html">Contact us</a></li>
-									</ul>
-								</nav>
-								<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+	
+				<!-- Header Content -->
+				<div class="header_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="header_content d-flex flex-row align-items-center justify-content-start">
+									<nav class="main_nav ml-auto">
+										<ul>
+											<li><a href="home.html">Home</a></li>
+											<li><a href="department.html">Department</a></li>
+											<li><a href="doctorList2.html">Doctor</a></li>
+											<li><a href="about.html">About us</a></li>
+											<!-- <li><a href="contact.html">Contact us</a></li> -->
+										</ul>
+									</nav>
+									<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<!-- Logo -->
-			<div class="logo_container_outer">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="logo_container">
-								<a href="#">
-									<div
-										class="logo_content d-flex flex-column align-items-start justify-content-center">
-										<div class="logo_line"></div>
-										<div class="logo d-flex flex-row align-items-center justify-content-center">
-											<div class="logo_text">B<span>Healthy</span></div>
-											<div class="logo_box">+</div>
+	
+				<!-- Logo -->
+				<div class="logo_container_outer">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="logo_container">
+									<a href="#">
+										<div
+											class="logo_content d-flex flex-column align-items-start justify-content-center">
+											<div class="logo_line"></div>
+											<div class="logo d-flex flex-row align-items-center justify-content-center">
+												<div class="logo_text">B<span>Healthy</span></div>
+												<div class="logo_box">+</div>
+											</div>
+											<div class="logo_sub">Health Care Center</div>
 										</div>
-										<div class="logo_sub">Health Care Center</div>
-									</div>
-								</a>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</header>
-
+			</header>
 
 		<div class="col-md-10  containter">
 
 			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
 				<div class="container  pull-left">
-					<div class="image_container"><img src="images/2.jpg"></div>
+					<div class="image_container"><img id = "propic" ></div>
 					<div class="containter" id="profile">
 
 					</div>
@@ -182,6 +192,7 @@
 				// name.textContent = 'hiiiii'
 				profile.appendChild(namedoctor);
 
+				var propic = document.getElementById('propic')
 				var department = document.createElement('div');
 				var degree = document.createElement('div');
 				var doctorlocation = document.createElement('div');
@@ -218,7 +229,7 @@
 						visiting_hour.textContent = "Visiting Hour :     " + dataJSON.visiting_hour;
 						fee.textContent = "Visiting Fee :     " + dataJSON.fee;
 						department.textContent = "Department :    " + dataJSON.department;
-
+						propic.src = dataJSON.image;
 
 
 					}
@@ -252,7 +263,14 @@
 
 		<script>
 			function make_appointment() {
-				if (window.localStorage.getItem('user') == null) {
+				var data = window.localStorage.getItem('user');
+				var dataJSON1 = JSON.parse(data);
+				var roleuser;
+				dataJSON1.authorities.forEach(doctorJSON => {
+					roleuser = doctorJSON.authority;
+				});
+
+				if (window.localStorage.getItem('user') == null || roleuser == "ROLE_DOCTOR") {
 					Swal.fire({
 						icon: 'error',
 						title: 'Oops...',
@@ -270,7 +288,7 @@
 					// Open a new connection, using the GET request on the URL endpoint
 					var data;
 					request.open("POST", "http://localhost:8181/api/makeappointment", false);
-					request.setRequestHeader("Authorization", "Bearer "+dataJson.accessToken);
+					request.setRequestHeader("Authorization", "Bearer " + dataJson.accessToken);
 					request.setRequestHeader("Content-Type", "application/json");
 					// 			doctorphonenumber;
 					// String patientname,patientphonenumber,date

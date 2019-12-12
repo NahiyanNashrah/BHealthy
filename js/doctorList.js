@@ -21,15 +21,18 @@ request.onload = function () {
 
         const info_image = document.createElement('div')
         info_image.setAttribute('class', 'col-lg-3')
-        row.appendChild(info_image)
+        
         const about_image = document.createElement('div')
         about_image.setAttribute('class', 'about_image')
 
 
         const img = document.createElement('img')
-        img.src = "images/about.png";
+        img.src = "images/dept_1.jpg";
         about_image.appendChild(img)
-
+        info_image.appendChild(about_image)
+        image_div.appendChild(info_image)
+        
+        row.appendChild(image_div)
 
 
 
