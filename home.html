@@ -61,11 +61,12 @@
 										id="dropdown">hello
 										<span class="caret"></span></button>
 									<ul class="dropdown-content">
-										<li><a href="#">HTML</a></li>
-										<li><a href="#">CSS</a></li>
+										<li><a href="#">Profile</a></li>
+										
+										<li><a id="my_prescription">My Prescription</a></li>
 										<li><a href="javascript: logout()">Logout</a></li>
 									</ul>
-
+									
 								</div>
 								<script>
 									function logout() {
@@ -93,6 +94,8 @@
 
 
 										document.getElementById('dropdown').innerHTML = obj.name;
+										var my_prescription = document.getElementById("my_prescription");
+										my_prescription.setAttribute('href',"my_prescription.html?id="+obj.phonenumber)
 
 									}
 								</script>
@@ -384,7 +387,7 @@
 								singleDoctor.setAttribute("class", "col-lg-3 col-md-6 doct_col");
 								list.appendChild(singleDoctor);
 								var alist = document.createElement('a');
-								alist.setAttribute('href', "#");
+								alist.setAttribute('href', "doctor_profile.html?id="+data[i].phonenumber);
 								singleDoctor.appendChild(alist);
 
 								var doctor = document.createElement('div')

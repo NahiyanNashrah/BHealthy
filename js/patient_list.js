@@ -44,7 +44,7 @@ function patientlist() {
 
 
                 tablerow.addEventListener('click', function () {
-                    window.location.replace("my_prescription.html?id = "+u.patientphonenumber);
+                    window.location.replace("my_prescription.html?id="+u.patientphonenumber);
                 });
                 tableAppointment.appendChild(tablerow)
 
@@ -54,32 +54,5 @@ function patientlist() {
     xhr.send()
 }
 
-        //         var temp = "";
-//         var tbl = document.getElementById('employee_table');
-//         var tbdy = document.createElement('tbody');
-//         data.forEach((u) => {
-
-//         var linktag = document.createElement('a')
-
-//             var tr = document.createElement('tr');
-//             var td1 = document.createElement('td');
-//             var txt1 = document.createTextNode(u.patientname);
-//             td1.appendChild(txt1);
-//             tr.appendChild(td1)
-//             var td2 = document.createElement('td');
-//             var txt2 = document.createTextNode(u.patientname);
-//             td2.appendChild(txt2);
-//             tr.appendChild(td2);
-//             var td3 = document.createElement('td');
-//             var txt3 = document.createTextNode(u.patientphonenumber);
-//             td3.appendChild(txt3);
-//             tr.appendChild(td3)
-//             linktag.appendChild(tr)
-//             tbdy.appendChild(linktag);
-//             tbl.appendChild(tbdy);
-//         })
-//     }
-// }
-// xhr.send()
 
 
