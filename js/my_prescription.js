@@ -32,8 +32,9 @@ request.onload = function () {
         app.appendChild(col)
         const fullLink = document.createElement('a')
 
-        var strLink = "#"
+        var strLink = prescriptionJSON.image
         fullLink.setAttribute("href", strLink)
+        fullLink.setAttribute("target","_blank");
         col.appendChild(fullLink)
 
         const prescription = document.createElement('div')
@@ -51,20 +52,24 @@ request.onload = function () {
 
         const prescription_content = document.createElement('div')
         prescription_content.setAttribute('class', 'doct_content text-center')
-        prescription_content.style.backgroundColor = "#726d6d"
+        prescription_content.style.backgroundColor = "#ADF5A7"
         prescription.appendChild(prescription_content)
 
         const prescription_title = document.createElement('div')
         prescription_title.setAttribute('class', 'doct_title')
+        prescription_title.textContent = prescriptionJSON.date
         prescription_content.appendChild(prescription_title)
 
         const prescription_subtitle = document.createElement('div')
         prescription_subtitle.setAttribute('class', 'doct_subtitle')
         prescription_content.appendChild(prescription_subtitle)
+        prescription_subtitle.textContent = prescriptionJSON.doctor_name
 
         const prescription_subtitle1 = document.createElement('div')
         prescription_subtitle1.setAttribute('class', 'doct_subtitle')
+        prescription_subtitle1.textContent = prescriptionJSON.department
         prescription_content.appendChild(prescription_subtitle1)
+
 
     })
 }
