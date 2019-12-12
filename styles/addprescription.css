@@ -15,7 +15,7 @@ body
 }
 .flex-container
 {
-    width: 350px;
+    /* width: 70%;
     height: auto;
     margin: auto;
     margin-top: 200px;
@@ -25,25 +25,57 @@ body
     align-items: center;
     box-sizing: border-box;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(150,150,150,0.5); */
+
+    width: 80%;
+    margin: 200px auto 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    height: auto;
+    position: relative;
     box-shadow: 0 0 10px rgba(150,150,150,0.5);
 
 }
-.title
+/* .title
 {
     color: #283290;
     font-weight: 700;
+} */
+.title
+{
+    position: absolute;
+    top:-10px;
+	background: #283290;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.title:before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border-left:5px solid transparent;
+    border-right:5px solid #01a9a9;
+    border-top:5px solid  transparent;
+    border-bottom:5px solid #01a9a9;
+
 }
 .sub_container
 {
-    width: 90%;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .form
 {
-    width:100%;
+    width:500px;
     margin-top: 15px;
 }
 .form label
@@ -60,6 +92,20 @@ body
     border-radius: 3px;
     width: 100%
 }
+.img_container
+{
+    width: 450px;
+    margin-top: 56px;
+    height: auto;
+    background: #fff;
+    margin-left: 8%;
+    float: left;
+}
+.img_container img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
 .button
 {
 	width: 80%;
@@ -70,6 +116,7 @@ body
     color:#fff;
     position: relative;
     margin-top: 20px;
+    margin-left: 100px;
 }
 .button::after
 {
@@ -130,16 +177,10 @@ a:hover
 .login_btn
 {
     margin-bottom: 50px;
-    margin-left: 50%;
-    margin-right: 50%;
+    margin-left: 300px;
+    margin-top: 70px;
 }
-.reg_btn
-{
-    margin-top: 10px;
-    margin-left: 50%;
-    margin-right: 50%;
 
-}
 
 /* ANIMATIONS */
 
