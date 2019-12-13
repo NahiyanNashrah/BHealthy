@@ -41,7 +41,7 @@
 					<div class="row">
 						<div class="col">
 							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-								<div class="top_bar_item "><a href="#">Request an Appointment</a></div>
+								
 								<div
 									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
 									<a href="#con" id="register">Register</a>
@@ -71,8 +71,7 @@
 										id="dropdown">hello
 										<span class="caret"></span></button>
 									<ul class="dropdown-content">
-										<li><a href="#">HTML</a></li>
-										<li><a href="#">CSS</a></li>
+										<li><a href="patient_list.html">Track Patient List</a></li>
 										<li><a href="javascript: logout()">Logout</a></li>
 									</ul>
 
@@ -128,8 +127,8 @@
 										<li><a href="home.html">Home</a></li>
 										<li><a href="department.html">Department</a></li>
 										<li><a href="home.html">Doctor</a></li>
-										<li><a href="about.html">About us</a></li>
-										<li><a href="contact.html">Contact us</a></li>
+										<!-- <li><a href="about.html">About us</a></li>
+										<li><a href="contact.html">Contact us</a></li> -->
 									</ul>
 								</nav>
 								<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -168,7 +167,7 @@
 
 			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
 				<div class="container  pull-left">
-					<div class="image_container"><img src="images/2.jpg"></div>
+					<div class="image_container"><img id = "propic"></div>
 					<div class="containter" id="profile">
 
 					</div>
@@ -231,6 +230,9 @@
 						visiting_hour.textContent = "Visiting Hour :     " + dataJSON.visiting_hour;
 						fee.textContent = "Visiting Fee :     " + dataJSON.fee;
 						department.textContent = "Department :    " + dataJSON.department;
+
+						document.getElementById('propic').src = dataJSON.image;
+
 
 
 
