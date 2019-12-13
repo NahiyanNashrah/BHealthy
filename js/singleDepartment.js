@@ -7,7 +7,7 @@ function getUrlVars() {
 }
 
 var dprtName = getUrlVars()["dept"]
-var url = "http://localhost:8181/api/auth/find-doctor/"+dprtName;
+var url = "http://localhost:8181/api/auth/doctorbydept/"+dprtName;
 
 
 var request = new XMLHttpRequest()
@@ -31,15 +31,16 @@ request.onload = function () {
 
         const info_image = document.createElement('div')
         info_image.setAttribute('class', 'col-lg-3')
-        row.appendChild(info_image)
+        
         const about_image = document.createElement('div')
         about_image.setAttribute('class', 'about_image')
 
 
         const img = document.createElement('img')
-        img.src = "images/about.png";
+        img.src = "images/dept_1.jpg";
         about_image.appendChild(img)
-
+        info_image.appendChild(about_image)
+        row.appendChild(info_image)
 
 
 

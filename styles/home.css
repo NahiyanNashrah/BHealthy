@@ -54,3 +54,144 @@
 .btn-primary:visited {
     background-color: rgb(49, 49, 146) !important;
 }
+
+
+.footer-area {
+	background: #0d0d1f
+}
+
+.section_gap {
+	padding: 120px 0px
+}
+
+
+@media (max-width: 991px) {
+	.footer-area .single-footer-widget {
+		margin-bottom: 30px
+	}
+}
+
+.footer-area .single-footer-widget h4 {
+	color: #ffffff;
+	margin-bottom: 35px
+}
+
+@media (max-width: 1024px) {
+	.footer-area .single-footer-widget h4 {
+		font-size: 18px
+	}
+}
+
+@media (max-width: 991px) {
+	.footer-area .single-footer-widget h4 {
+		margin-bottom: 15px
+	}
+}
+
+.footer-area .single-footer-widget ul {
+	padding-left: 0px
+}
+
+.footer-area .single-footer-widget ul li {
+	margin-bottom: 15px;
+	list-style: none
+}
+
+.footer-area .single-footer-widget ul li a {
+	transition: all 300ms linear 0s;
+	color: #797979
+}
+
+.footer-area .single-footer-widget ul li a:hover {
+	color: #ffffff
+}
+
+.footer-area .single-footer-widget .form-wrap {
+	margin-top: 25px
+}
+
+.footer-area .single-footer-widget input {
+	height: 50px;
+	border: none;
+	width: 70% !important;
+	font-weight: 300;
+	background: rgba(255, 255, 255, 0.15);
+	color: #ffffff;
+	padding-left: 20px;
+	border-radius: 0;
+	font-size: 14px;
+	padding: 10px
+}
+
+.footer-area .single-footer-widget input:focus {
+	outline: none
+}
+
+.footer-area .single-footer-widget .click-btn {
+	font-size: 12px;
+	text-transform: uppercase;
+	background: #71cd14;
+	color: #ffffff;
+	border-radius: 0;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	padding: 8px 12px;
+	border: 0;
+	position: relative;
+	left: -12%;
+	transition: all 300ms linear 0s
+}
+
+.footer-area .single-footer-widget .click-btn:hover {
+	opacity: .8
+}
+
+.footer-area .footer-bottom {
+	margin-top: 50px
+}
+
+@media (max-width: 991px) {
+	.footer-area .footer-bottom {
+		margin-top: 20px
+	}
+}
+
+.footer-area .footer-bottom p {
+	color: #ffffff
+}
+
+.footer-area .footer-bottom a,
+.footer-area .footer-bottom span {
+	color: #71cd14
+}
+
+.footer-area .footer-bottom span {
+	font-weight: 700
+}
+
+.footer-area .footer-bottom .footer-social {
+	text-align: center
+}
+
+@media (max-width: 991px) {
+	.footer-area .footer-bottom .footer-social {
+		text-align: left;
+		margin-top: 30px
+	}
+}
+
+.footer-area .footer-bottom .footer-social a {
+	background: rgba(255, 255, 255, 0.15);
+	margin-left: 5px;
+	width: 40px;
+	color: #ffffff;
+	display: inline-grid;
+	text-align: center;
+	height: 40px;
+	align-content: center;
+	transition: all 300ms linear 0s
+}
+
+.footer-area .footer-bottom .footer-social a:hover {
+	background: #71cd14
+}
