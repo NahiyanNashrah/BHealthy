@@ -37,10 +37,16 @@
 									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
 									<a href="#con" id="register">Register</a>
 									<div id="con">
-										<h4><input type="radio" name="role" value="1" /> As a Doctor</h4> <br> <br>
-										<h4><input type="radio" name="role" value="0" /> As a Patient</h4>
+										<div style="margin-left:25px;">
+											<a href = "doctor_signup.html"><button class="btn btn-success"  style="padding-inline: 50px; cursor: pointer;" >Doctor </button></a>
+										</div>
+										<div style="margin-top: 25px;margin-left:25px">
+												<a href = "sign_up.html"><button class="btn btn-success"style="cursor: pointer" >Patient</button></a>
+											</div>
+										<!-- <h4><a href="doctor_signup.html"style="color: black; font-size: 22px "> Doctor</a></h4> <br> 
+										<h4><a href= "sign_up.html"style="color: black; font-size: 22px"> Patient</a></h4> -->
 									</div>
-									<script>
+									<!-- <script>
 										$('input:radio[name="role"]').change(
 											function () {
 												if ($(this).is(':checked') && $(this).val() == '1') {
@@ -50,7 +56,7 @@
 													window.location = "sign_up.html";
 												}
 											});
-									</script>
+									</script> -->
 								</div>
 
 								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
@@ -61,7 +67,7 @@
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
 										id="dropdown">hello
 										<span class="caret"></span></button>
-									<ul class="dropdown-content">
+										<ul class="dropdown-content" id = "navbardrop">
 										<li><a href="patient_profile.html">My Profile</a></li>
 										
 										<li><a id="my_prescription">My Prescription</a></li>
@@ -69,7 +75,10 @@
 										<li><a href="myappointment.html">Track My Appointment</a></li>
 										<li><a href="javascript: logout()">Logout</a></li>
 									</ul>
+									<script>
 									
+									
+									</script>
 								</div>
 								<script>
 									function logout() {
@@ -438,7 +447,7 @@
 					<!-- Doctor -->
 					<div class="col-lg-3 col-md-6 doct_col">
 						<div class="doct">
-							<div class="button doct_button"><a href="#">see all</a></div>
+							<div class="button doct_button"><a href="doctorList2.html">see all</a></div>
 						</div>
 					</div>
 				</div>

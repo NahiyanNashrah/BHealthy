@@ -32,5 +32,11 @@ public class DoctorController {
 		return doctorRepository.findByPhonenumber(phonenumber);
 		
 	}
+	@CrossOrigin
+	@GetMapping("/api/auth/doctorbydept/{dept}")
+	public List<Doctor> getDoctorUsingDept(@PathVariable String dept) {
+		return doctorRepository.findByDepartment(dept);
+		
+	}
 	
 }

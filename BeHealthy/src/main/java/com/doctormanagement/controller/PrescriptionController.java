@@ -44,19 +44,13 @@ public class PrescriptionController {
 	CloudinaryConfig cloudc;
 	
 	
-	
+	@CrossOrigin
 	@PostMapping("/api/upload-prescrption")
 	@PreAuthorize("hasRole('PATIENT')")
     public FileResponse uploadMultipleFiles(@RequestPart("file") MultipartFile file, @RequestPart("prescription_detailes") PrescriptionDetails prescriptionDetailes) {
 		
 		
-//		String name = storageService.store(file);
 		String name = singleImageUpload(file);
-//        String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/download/")
-//                .path(name)
-//                .toUriString();
-        
         prescriptionDetailes.setImage(name);
         prescriptionDetailesRepository.save(prescriptionDetailes);
 

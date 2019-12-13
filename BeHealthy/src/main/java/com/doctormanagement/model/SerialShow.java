@@ -14,10 +14,10 @@ public class SerialShow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	String doctorPhonenumber,doctorname,location,fee,degree,department,visiting_time;
+	String doctorPhonenumber,doctorname,location,fee,degree,department,visiting_time,serial;
 	String patientPhonenumber,date;
 	public SerialShow(Long id, String doctorPhonenumber, String doctorname, String location, String fee, String degree,
-			String department, String visiting_time, String patientPhonenumber, String date) {
+			String department, String visiting_time, String patientPhonenumber, String date,String serial) {
 		super();
 		this.id = id;
 		this.doctorPhonenumber = doctorPhonenumber;
@@ -29,9 +29,10 @@ public class SerialShow {
 		this.visiting_time = visiting_time;
 		this.patientPhonenumber = patientPhonenumber;
 		this.date = date;
+		this.serial = serial;
 	}
 	public SerialShow(String doctorPhonenumber, String doctorname, String location, String fee, String degree,
-			String department, String visiting_time, String patientPhonenumber, String date) {
+			String department, String visiting_time, String patientPhonenumber, String date,String serial) {
 		super();
 		this.doctorPhonenumber = doctorPhonenumber;
 		this.doctorname = doctorname;
@@ -42,6 +43,7 @@ public class SerialShow {
 		this.visiting_time = visiting_time;
 		this.patientPhonenumber = patientPhonenumber;
 		this.date = date;
+		this.serial = serial;
 	}
 	public SerialShow() {
 		super();
@@ -105,6 +107,12 @@ public class SerialShow {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getSerial() {
+		return serial;
+	}
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
 	

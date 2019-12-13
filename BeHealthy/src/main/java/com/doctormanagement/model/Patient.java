@@ -51,7 +51,7 @@ public class Patient {
 	}
 
 	public Patient() {
-		super();
+//		super();
 	}
 
 	public Long getId() {
