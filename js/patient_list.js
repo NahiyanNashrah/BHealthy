@@ -44,7 +44,9 @@ function patientlist() {
 
 
                 tablerow.addEventListener('click', function () {
-                    window.location.replace("my_prescription.html?id="+u.patientphonenumber);
+                    window.localStorage.setItem('prescription',u.patientphonenumber);
+                    console.log(window.localStorage.getItem('prescription'));
+                    window.location.replace("my_prescription.html");
                 });
                 tableAppointment.appendChild(tablerow)
 
