@@ -278,12 +278,7 @@
                                     if (this.status == 200) {
                                         var data1 = JSON.parse(this.response)
                                         data1.forEach(dataJSON => {
-                                            // var dataJSON = JSON.parse(this.response);
-
-                                            // var a = Date.parse("2012-11-04");
-                                            // if (d1 < d2) {
-                                            //     alert("Error!");
-                                            // }
+                                            
                                             var today = new Date();
                                             var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
                                             var currentdates = date.split('-')
