@@ -6,7 +6,15 @@ function getUrlVars() {
     return vars;
 }
 
-var id = getUrlVars()["id"];
+var id = window.localStorage.getItem('prescription')
+if(id == null){
+    var usert = JSON.parse(window.localStorage.getItem('user'));
+    id = usert.phonenumber;
+}
+else{
+    window.localStorage.removeItem('prescription')
+}
+
 
 var token;
 var data = window.localStorage.getItem('user');
