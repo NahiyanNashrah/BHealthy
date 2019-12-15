@@ -57,16 +57,13 @@
                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                                                 id="dropdown">hello
                                                 <span class="caret"></span></button>
-                                            <ul class="dropdown-content">
-                                                <li><a href="patient_profile.html">My Profile</a></li>
-                                                
-                                                <li><a id="my_prescription">My Prescription</a></li>
-                                                <li><a href="addprescription.html">ADD Prescription</a></li>
-                                                <li><a href="myappointment.html">Track My Appointment</a></li>
-                                                <li><a href="javascript: logout()">Logout</a></li>
+                                            <ul class="dropdown-content" id="dropdownconfig">
+                                                <script src="js/navbarconfig.js"></script>
                                             </ul>
                                             
                                         </div>
+
+                                        
                                         <script>
                                             function logout() {
                                                 window.localStorage.clear();

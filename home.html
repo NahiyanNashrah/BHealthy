@@ -38,25 +38,16 @@
 									<a href="#con" id="register">Register</a>
 									<div id="con">
 										<div style="margin-left:25px;">
-											<a href = "doctor_signup.html"><button class="btn btn-success"  style="padding-inline: 50px; cursor: pointer;" >Doctor </button></a>
+											<a href="doctor_signup.html"><button class="btn btn-success"
+													style="padding-inline: 50px; cursor: pointer;">Doctor </button></a>
 										</div>
 										<div style="margin-top: 25px;margin-left:25px">
-												<a href = "sign_up.html"><button class="btn btn-success"style="cursor: pointer" >Patient</button></a>
-											</div>
-										<!-- <h4><a href="doctor_signup.html"style="color: black; font-size: 22px "> Doctor</a></h4> <br> 
-										<h4><a href= "sign_up.html"style="color: black; font-size: 22px"> Patient</a></h4> -->
+											<a href="sign_up.html"><button class="btn btn-success"
+													style="cursor: pointer">Patient</button></a>
+										</div>
+
 									</div>
-									<!-- <script>
-										$('input:radio[name="role"]').change(
-											function () {
-												if ($(this).is(':checked') && $(this).val() == '1') {
-													window.location = "doctor_signup.html";
-												}
-												else {
-													window.location = "sign_up.html";
-												}
-											});
-									</script> -->
+
 								</div>
 
 								<div class="top_bar_item_logIn  d-flex flex-row align-items-center"><a href="login.html"
@@ -67,18 +58,10 @@
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
 										id="dropdown">hello
 										<span class="caret"></span></button>
-										<ul class="dropdown-content" id = "navbardrop">
-										<li><a href="patient_profile.html">My Profile</a></li>
-										
-										<li><a id="my_prescription">My Prescription</a></li>
-										<li><a href="addprescription.html">ADD Prescription</a></li>
-										<li><a href="myappointment.html">Track My Appointment</a></li>
-										<li><a href="javascript: logout()">Logout</a></li>
+									<ul class="dropdown-content" id="dropdownconfig">
+										<script src="js/navbarconfig.js"></script>
 									</ul>
-									<script>
-									
-									
-									</script>
+
 								</div>
 								<script>
 									function logout() {
@@ -107,7 +90,7 @@
 
 										document.getElementById('dropdown').innerHTML = obj.name;
 										var my_prescription = document.getElementById("my_prescription");
-										my_prescription.setAttribute('href',"my_prescription.html")
+										my_prescription.setAttribute('href', "my_prescription.html")
 
 									}
 								</script>
@@ -133,8 +116,8 @@
 										<li><a href="home.html">Home</a></li>
 										<li><a href="department.html">Department</a></li>
 										<li><a href="doctorList2.html">Doctor</a></li>
-										 <li><a href="about.html">About us</a></li>
-										<!-- <li><a href="contact.html">Contact us</a></li> --> 
+										<li><a href="about.html">About us</a></li>
+										<!-- <li><a href="contact.html">Contact us</a></li> -->
 									</ul>
 								</nav>
 								<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -291,7 +274,8 @@
 								<div style="width:29px; height:29px;"><img src="images/alarm-clock.svg" alt=""></div>
 							</div>
 							<div class="box_title">Appointments</div>
-							<div class="box_text">Its easy to make appointment at your home. No hassel of calling and going to chamber to fix appointment.</div>
+							<div class="box_text">Its easy to make appointment at your home. No hassel of calling and
+								going to chamber to fix appointment.</div>
 						</div>
 					</div>
 
@@ -302,7 +286,8 @@
 								<div style="width: 29px; height:29px;"><img src="images/phone-call.svg" alt=""></div>
 							</div>
 							<div class="box_title">Medical History</div>
-							<div class="box_text">Store your Prescription online. Can view it anytime from anywhere you want to. Doctor can check easily your prescription you made appointment</div>
+							<div class="box_text">Store your Prescription online. Can view it anytime from anywhere you
+								want to. Doctor can check easily your prescription you made appointment</div>
 						</div>
 					</div>
 
@@ -314,8 +299,9 @@
 										alt=""></div>
 							</div>
 							<div class="box_title">Manage Patients</div>
-							<div class="box_text">Track your patient and manage which amount of patient you want to see on a perticular day.</div>
-						
+							<div class="box_text">Track your patient and manage which amount of patient you want to see
+								on a perticular day.</div>
+
 						</div>
 					</div>
 
@@ -375,7 +361,7 @@
 				</div>
 				<div class="row doctors_row row-md-eq-height" id="doctorlist">
 
-					
+
 
 					<script>
 
@@ -397,7 +383,7 @@
 								singleDoctor.setAttribute("class", "col-lg-3 col-md-6 doct_col");
 								list.appendChild(singleDoctor);
 								var alist = document.createElement('a');
-								alist.setAttribute('href', "doctor_profile.html?id="+data[i].phonenumber);
+								alist.setAttribute('href', "doctor_profile.html?id=" + data[i].phonenumber);
 								singleDoctor.appendChild(alist);
 
 								var doctor = document.createElement('div')
@@ -476,57 +462,57 @@
 		</div>
 
 	</div>
-	
+
 
 
 	<footer class="footer-area section_gap">
-			<div class="container">
-			  <div class="row">
-				
+		<div class="container">
+			<div class="row">
+
 				<div class="col-lg-2 col-md-6 single-footer-widget">
-				  <h4>Quick Links</h4>
-				  <ul>
-					<li><a href="department.html">Department</a></li>
-					
-					<li><a href="doctorList2.html">All Doctors</a></li>
-				  </ul>
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="department.html">Department</a></li>
+
+						<li><a href="doctorList2.html">All Doctors</a></li>
+					</ul>
 				</div>
-		
+
 				<div class="col-lg-2 col-md-6 single-footer-widget">
-				  <h4> Doctor Based on Department</h4>
-				  <ul>
-					<li><a href="singleDepartment.html?dept=Neurology">Neorology</a></li>
-					<li><a href="singleDepartment.html?dept=Dental">Dental</a></li>
-					<li><a href="singleDepartment.html?dept=Orthopedics">Orthopedics</a></li>
-					<li><a href="singleDepartment.html?dept=Pediatric">Pediatric</a></li>
-					<li><a href="singleDepartment.html?dept=Oncology">Oncology</a></li>
-				  </ul>
+					<h4> Doctor Based on Department</h4>
+					<ul>
+						<li><a href="singleDepartment.html?dept=Neurology">Neorology</a></li>
+						<li><a href="singleDepartment.html?dept=Dental">Dental</a></li>
+						<li><a href="singleDepartment.html?dept=Orthopedics">Orthopedics</a></li>
+						<li><a href="singleDepartment.html?dept=Pediatric">Pediatric</a></li>
+						<li><a href="singleDepartment.html?dept=Oncology">Oncology</a></li>
+					</ul>
 				</div>
 				<div class="col-lg-3 col-md-7 single-footer-widget ml-auto ">
-				  <h4>Contacts</h4>
-				  <ul>
-					<li style="color: white;">SWE Society</li>
-					<li style="color: gray;">Mobile No. +8801971429592</li>
-					<li style="color: white;">Fazle Mohmmad Tawsif</li>
-					<li style="color: gray;">Mobile No. +8801532522961</li>
-		
-				  </ul>
+					<h4>Contacts</h4>
+					<ul>
+						<li style="color: white;">SWE Society</li>
+						<li style="color: gray;">Mobile No. +8801971429592</li>
+						<li style="color: white;">Fazle Mohmmad Tawsif</li>
+						<li style="color: gray;">Mobile No. +8801532522961</li>
+
+					</ul>
 				</div>
-		
-			  </div>
-			  <div class="footer-bottom row align-items-center">
-				<p class="footer-text m-0 col-lg-8 col-md-12">
-				  Site Developed & Managed By: SWE, SUST.
-				</p>
-		
-			  </div>
+
 			</div>
-		  </footer>
-		  <!--================ End footer Area  =================-->
-		
-		
-		
-		
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-8 col-md-12">
+					Site Developed & Managed By: SWE, SUST.
+				</p>
+
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+
+
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="plugins/parallax-js-master/parallax.min.js"></script>
