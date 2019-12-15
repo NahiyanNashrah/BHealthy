@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/sign_up.css">
     <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 </head>
 
 <body>
@@ -93,21 +95,21 @@
 
                     var propic = document.getElementById('propic');
 
-                   
+
 
                     var formData = new FormData();
                     var file = propic.files[0];
-                    
+
                     if (propic.files.length == null) {
                         alert('Please upload Image')
                     }
                     else if (password.value != confirmpassword.value) {
                         alert("Password Not Matched")
-                        
+
                     }
                     else {
                         formData.append("file", file);
-                        
+
 
                         formData.append("patient", new Blob([JSON.stringify({
                             "name": name.value,
@@ -127,12 +129,23 @@
                         var xhr = new XMLHttpRequest();
                         xhr.open("POST", "http://localhost:8181/api/auth/signup_patient", true);
                         xhr.send(formData);
+                        Swal.fire({
+                            title: 'Account is creating'
+                        });
+                        Swal.showLoading();
+
+
                         xhr.onreadystatechange = function () {
                             if (this.readyState == 4 && this.status == 200) {
                                 // Here we go on the new page
-
-                                window.location = "home.html";
-                                alert("UPLOAD DONE")
+                                Swal.fire({
+                                    title: 'Account Created!',
+                                    type: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                })
+                                window.location.replace("home.html");
+                                // alert("UPLOAD DONE")
                             }
                         };
 
