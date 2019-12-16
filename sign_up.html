@@ -51,21 +51,39 @@
                     </div>
 
                     <div class="form">
+                        <label class="label">age :</label><br>
+                        <input type="text" class="input" placeholder="" id="age">
+                    </div>
+                    <div class="form">
                         <label class="label">blood group :</label>
-                        <input type="text" class="input" placeholder="" id="bloodgroup">
+                        <select class="custom-select custom-select-lg mb-2" style="width:550px;" id="bloodgroup">
+                            <option selected>Select Bloodgroup</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+
+                   
+
+                    <div class="form">
+                        <label class="label">gender:</label><br>
+                        <select class="custom-select custom-select-lg mb-2" style="width:550px;" id="gender">
+                            <option selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+
                     </div>
 
                     <div class="form">
-                        <label class="label">age :</label>
-                        <input type="number" class="input" placeholder="" id="age">
-                    </div>
 
-                    <div class="form">
-                        <label class="label">gender :</label>
-                        <input type="text" class="input" placeholder="" id="gender">
-                    </div>
-
-                    <div class="form">
                         <label class="label">address :</label>
                         <input type="text" class="input" placeholder="" id="address">
                     </div>
@@ -80,6 +98,14 @@
                 </div>
             </div>
             <script>
+
+                function ValidateEmail(mail) {
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+                        return (true)
+                    }
+                    // alert("You have entered an invalid email address!")
+                    return (false)
+                }
                 function registerPatient() {
 
                     var name = document.getElementById('name');
@@ -95,17 +121,48 @@
 
                     var propic = document.getElementById('propic');
 
+                    var fullPath = document.getElementById('propic').value;
+                    console.log(bloodgroup.value)
+                    var lastThree;
+                    var filename;
+                    if (fullPath !== null) {
+                        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                        filename = fullPath.substring(startIndex);
+                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                            filename = filename.substring(1);
+                        }
 
+                        lastThree = filename.substr(filename.length - 3,3)
+                    }
+                    var file = propic.files[0];
+                 
+                    console.log(lastThree)
+                    var phonenumber = phoneno.value;
+
+                    var firsttwo = phonenumber.substr(0, 2);
+                    console.log(firsttwo)
 
                     var formData = new FormData();
                     var file = propic.files[0];
 
-                    if (propic.files.length == null) {
+                    if (file == null) {
                         alert('Please upload Image')
+                    }
+                    else if (lastThree != "jpg" && lastThree != 'png') {
+                        alert('Please provide valid image file ')
+                    }
+                    else if (!ValidateEmail(email.value)) {
+                        alert("Email not valid")
+                    }
+                    else if (password.value.length < 6) {
+                        alert('Password Length too small. Minimu 6 length');
                     }
                     else if (password.value != confirmpassword.value) {
                         alert("Password Not Matched")
 
+                    }
+                    else if (phonenumber.length !== 11 || firsttwo !== '01') {
+                        alert('Please input valid phonenumber or Remove country code')
                     }
                     else {
                         formData.append("file", file);
@@ -158,8 +215,8 @@
 
             <div class="col-lg-4">
                 <div class="img_container">
-                    <img src="images/profile_pic.png" alt="">
-                    <input type="file" accept="image/" id="propic">
+
+                    <input type="file" accept="image/" id="propic" style="margin-top: 200px;">
                 </div>
             </div>
 
