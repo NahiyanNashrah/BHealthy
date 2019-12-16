@@ -11,7 +11,7 @@ function patientlist() {
     var patienttable = document.getElementById('patienttable');
 
 
-    xhr.open('GET', 'http://localhost:8181/api/patient_list/' + dataJson.phonenumber +'/'+date, true)
+    xhr.open('GET', backendurl+'api/patient_list/' + dataJson.phonenumber +'/'+date, true)
 
     xhr.setRequestHeader("Authorization", "Bearer " + token);
     xhr.onload = function () {

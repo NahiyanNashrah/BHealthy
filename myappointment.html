@@ -301,7 +301,7 @@
                                 token = data.accessToken;
                                 console.log(token)
 
-                                var url = "http://localhost:8181/api/getallserial/" + data.phonenumber;
+                                var url = backendurl+"api/getallserial/" + data.phonenumber;
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("GET", url, false);
 
@@ -411,7 +411,7 @@
                                     console.log(date)
 
 
-                                    var url = "http://localhost:8181/api/getallserial/01971429592";
+                                    var url = backendurl+"api/getallserial/01971429592";
                                     var xhr = new XMLHttpRequest();
                                     xhr.open("GET", url, false);
                                     var data;
