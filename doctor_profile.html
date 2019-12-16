@@ -301,7 +301,7 @@
 
 						request.send();
 
-						eventDates[new Date('12-11-2019')] = new Date('12-11-2019');
+						// eventDates[new Date('12-11-2019')] = new Date('12-11-2019');
 
 						$('#datepicker').datepicker({
 							format: 'dd-mm-yyyy',
@@ -352,8 +352,8 @@
 				var currentdateval = Number(currentdates[2] + currentdates[1] + currentdates[0]);
 
 				var apdate = document.getElementById('datepicker').value;
-				var apdates = apdate.split('-');
-				var apdateval = Number(apdates[2] + apdates[1] + apdates[0]);
+				var apdates = apdate.split('/');
+				var apdateval = Number(apdates[2] + apdates[0] + apdates[1]);
 				console.log(currentdateval + "   " + apdateval)
 				if (currentdateval > apdateval) {
 					Swal.fire({
@@ -378,6 +378,9 @@
 					var dataS = window.localStorage.getItem('user');
 					var dataJson = JSON.parse(dataS)
 					console.log(date)
+
+					var apdates = date.split('/');
+					var apdateval = apdates[1] +'-'+ apdates[0] +'-'+ apdates[2];
 					// Open a new connection, using the GET request on the URL endpoint
 					var data;
 					request.open("POST", backendurl+"api/makeappointment", false);
@@ -386,7 +389,7 @@
 					// 			doctorphonenumber;
 					// String patientname,patientphonenumber,date
 					var id = getUrlVars()["id"];
-					data = JSON.stringify({ "doctorphonenumber": id, "patientname": dataJson.name, "patientphonenumber": dataJson.phonenumber, "date": date });
+					data = JSON.stringify({ "doctorphonenumber": id, "patientname": dataJson.name, "patientphonenumber": dataJson.phonenumber, "date": apdateval });
 					request.onload = function () {
 						// Begin accessing JSON data here
 						if (this.status == 200) {

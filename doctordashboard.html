@@ -24,6 +24,7 @@
 	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<!-- <link rel="stylesheet" type="text/css" href="styles/main_styles.css"> -->
 	<link rel="stylesheet" type="text/css" href="styles/home.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src="js/url.js"></script>
 
 </head>
@@ -42,7 +43,7 @@
 					<div class="row">
 						<div class="col">
 							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-								
+
 								<div
 									class="top_bar_item_register  d-flex flex-row align-items-center justify-content-start ml-auto">
 									<a href="#con" id="register">Register</a>
@@ -168,7 +169,7 @@
 
 			<div class="container pull-left col-md-5" style="margin-top: 220px; margin-left: 250px;">
 				<div class="container  pull-left">
-					<div class="image_container"><img id = "propic"></div>
+					<div class="image_container"><img id="propic"></div>
 					<div class="containter" id="profile">
 
 					</div>
@@ -215,7 +216,7 @@
 				var id = window.localStorage.getItem('user');
 				var obj = JSON.parse(id);
 				console.log(obj.phonenumber)
-				var url = backendurl+"api/auth/single_doctor/" + obj.phonenumber;
+				var url = backendurl + "api/auth/single_doctor/" + obj.phonenumber;
 
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
@@ -283,25 +284,44 @@
 
 	<script>
 		function addAvailability() {
+			var today = new Date();
+			var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+			var currentdates = date.split('-')
+			var currentdateval = Number(currentdates[0] + currentdates[1] + currentdates[2]);
+
 			var data = JSON.parse(window.localStorage.getItem('user'));
+			var apdate = document.getElementById('datepicker').value;
+			var apdates = apdate.split('-');
+			var apdateval = Number(apdates[0] + apdates[1] + apdates[2]);
+			console.log(currentdateval + "   " + apdateval)
+			if (currentdateval > apdateval) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please select a valid date',
+					footer: '<a href = "home.html"><b>Go to home</b></a>'
+				});
+			}
+			else {
 
-			var url = backendurl+"api/addavailability/" + data.phonenumber + "/" + document.getElementById('datepicker').value + "/" + document.getElementById('numberOfPatient').value;
-			// {doctorphonenumber}/{date}/{numberOfPatient}
+				var url = backendurl + "api/addavailability/" + data.phonenumber + "/" + document.getElementById('datepicker').value + "/" + document.getElementById('numberOfPatient').value;
+				// {doctorphonenumber}/{date}/{numberOfPatient}
 
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", url, true);
-			var token = data.accessToken;
-			console.log(data.accessToken)
-			xhr.setRequestHeader("Authorization", "Bearer " + token);
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", url, true);
+				var token = data.accessToken;
+				console.log(data.accessToken)
+				xhr.setRequestHeader("Authorization", "Bearer " + token);
 
-			xhr.onload = function () {
-				if (this.status == 200) {
-					window.location.replace('doctordashboard.html');
+				xhr.onload = function () {
+					if (this.status == 200) {
+						window.location.replace('doctordashboard.html');
 
 
-				}
-			};
-			xhr.send();
+					}
+				};
+				xhr.send();
+			}
 		}
 	</script>
 

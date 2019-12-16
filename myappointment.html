@@ -135,7 +135,7 @@
                                         id="dropdown">hello
                                         <span class="caret"></span></button>
                                     <ul class="dropdown-content" id="dropdownconfig">
-                                        
+
                                     </ul>
 
                                 </div>
@@ -153,16 +153,51 @@
                                             text: 'Login as Patient First to Make Appointment',
                                             footer: '<a href = "doctordashboard.html"><b>Go back to Dashboard</b></a>'
                                         })
+                                    } else {
+
+                                        var drop = document.getElementById('dropdownconfig');
+
+                                        var profile = document.createElement('li');
+                                        var ahrefp = document.createElement('a');
+                                        ahrefp.setAttribute('href', 'patient_profile.html');
+                                        ahrefp.textContent = "My Profile"
+                                        profile.appendChild(ahrefp);
+
+                                        var prescription = document.createElement('li');
+                                        var ahref = document.createElement('a');
+                                        ahref.setAttribute('href', 'my_prescription.html');
+                                        ahref.textContent = "My Prescription"
+                                        prescription.appendChild(ahref);
+
+                                        var addprescription = document.createElement('li');
+                                        var addahref = document.createElement('a');
+                                        addahref.setAttribute('href', 'addprescription.html');
+                                        addahref.textContent = "Add Prescription"
+                                        addprescription.appendChild(addahref);
+
+                                        var appointment = document.createElement('li');
+                                        var ahrefapp = document.createElement('a');
+                                        ahrefapp.setAttribute('href', 'myappointment.html');
+                                        ahrefapp.textContent = "Track My Appointment"
+                                        appointment.appendChild(ahrefapp);
+
+                                        var logout = document.createElement('li');
+                                        var ahreflogout = document.createElement('a');
+                                        ahreflogout.setAttribute('href', 'javascript:logout()');
+                                        ahreflogout.textContent = "Logout"
+                                        logout.appendChild(ahreflogout);
+
+
+
+                                        drop.appendChild(profile)
+                                        drop.appendChild(prescription)
+                                        drop.appendChild(addprescription)
+                                        drop.appendChild(appointment)
+                                        drop.appendChild(logout)
                                     }
 
 
-                                    var drop = document.getElementById('dropdownconfig');
-                                    var prescription = document.createElement('li');
-                                    var ahref = document.createElement('a');
-                                    ahref.setAttribute('href', 'my_prescription.html');
-                                    ahref.textContent = "My Prescription"
-                                    prescription.appendChild(ahref);
-                                    drop.appendChild(prescription)
+
 
 
                                 </script>
@@ -301,7 +336,7 @@
                                 token = data.accessToken;
                                 console.log(token)
 
-                                var url = backendurl+"api/getallserial/" + data.phonenumber;
+                                var url = backendurl + "api/getallserial/" + data.phonenumber;
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("GET", url, false);
 
@@ -411,7 +446,7 @@
                                     console.log(date)
 
 
-                                    var url = backendurl+"api/getallserial/01971429592";
+                                    var url = backendurl + "api/getallserial/01971429592";
                                     var xhr = new XMLHttpRequest();
                                     xhr.open("GET", url, false);
                                     var data;
