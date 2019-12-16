@@ -1,1 +1,1 @@
-const backendurl = "http://localhost:8181/"
+const backendurl = "http://18.141.87.20:81/"
