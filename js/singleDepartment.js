@@ -7,7 +7,7 @@ function getUrlVars() {
 }
 
 var dprtName = getUrlVars()["dept"]
-var url = "http://localhost:8181/api/auth/doctorbydept/"+dprtName;
+var url = backendurl+"api/auth/doctorbydept/"+dprtName;
 
 
 var request = new XMLHttpRequest()
