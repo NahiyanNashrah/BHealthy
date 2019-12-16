@@ -273,7 +273,7 @@
 						var request = new XMLHttpRequest()
 						var id = getUrlVars()["id"];
 						var eventDates = {};
-						request.open("GET", "http://localhost:8181/api/auth/getall/" + id, true);
+						request.open("GET", backendurl+"api/auth/getall/" + id, true);
 						request.setRequestHeader("Content-Type", "application/json");
 
 						request.onload = function () {
@@ -380,7 +380,7 @@
 					console.log(date)
 					// Open a new connection, using the GET request on the URL endpoint
 					var data;
-					request.open("POST", "http://localhost:8181/api/makeappointment", false);
+					request.open("POST", backendurl+"api/makeappointment", false);
 					request.setRequestHeader("Authorization", "Bearer " + dataJson.accessToken);
 					request.setRequestHeader("Content-Type", "application/json");
 					// 			doctorphonenumber;
