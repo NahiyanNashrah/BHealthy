@@ -21,6 +21,7 @@
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src="js/url.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="styles/main_styles.css"> -->
 	<link rel="stylesheet" type="text/css" href="styles/home.css">
@@ -109,19 +110,78 @@
 										id="login">Login</a></div>
 
 
-								<div class="dropdown" id="menu">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
-										id="dropdown">hello
-										<span class="caret"></span></button>
-										<ul class="dropdown-content" id = "navbardrop">
-										<li><a href="patient_profile.html">My Profile</a></li>
-										
-										<li><a id="my_prescription">My Prescription</a></li>
-										<li><a href="addprescription.html">ADD Prescription</a></li>
-										<li><a href="myappointment.html">Track My Appointment</a></li>
-										<li><a href="javascript: logout()">Logout</a></li>
-									</ul>
+										<div class="dropdown" id="menu">
+											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+												id="dropdown">hello
+												<span class="caret"></span></button>
+											<ul class="dropdown-content" id="dropdownconfig">
+		
+											</ul>
+		
+										</div>
 									<script>
+
+									var datauser = JSON.parse(window.localStorage.getItem('user'));
+                                    var roleuser;
+                                    datauser.authorities.forEach(doctorJSON => {
+                                        roleuser = doctorJSON.authority;
+                                    });
+                                    if (roleuser == "ROLE_PATIENT") {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Login as Doctor First to Make Appointment',
+                                            footer: '<a href = "doctordashboard.html"><b>Go back to Dashboard</b></a>'
+                                        })
+                                    } else {
+
+                                        var drop = document.getElementById('dropdownconfig');
+
+                                        var profile = document.createElement('li');
+                                        var ahrefp = document.createElement('a');
+                                        ahrefp.setAttribute('href', 'patient_profile.html');
+                                        ahrefp.textContent = "My Profile"
+                                        profile.appendChild(ahrefp);
+
+                                        var prescription = document.createElement('li');
+                                        var ahref = document.createElement('a');
+                                        ahref.setAttribute('href', 'my_prescription.html');
+                                        ahref.textContent = "My Prescription"
+                                        prescription.appendChild(ahref);
+
+                                        var addprescription = document.createElement('li');
+                                        var addahref = document.createElement('a');
+                                        addahref.setAttribute('href', 'addprescription.html');
+                                        addahref.textContent = "Add Prescription"
+                                        addprescription.appendChild(addahref);
+
+                                        var appointment = document.createElement('li');
+                                        var ahrefapp = document.createElement('a');
+                                        ahrefapp.setAttribute('href', 'myappointment.html');
+                                        ahrefapp.textContent = "Track My Appointment"
+                                        appointment.appendChild(ahrefapp);
+
+                                        var logout = document.createElement('li');
+                                        var ahreflogout = document.createElement('a');
+                                        ahreflogout.setAttribute('href', 'javascript:logout()');
+                                        ahreflogout.textContent = "Logout"
+                                        logout.appendChild(ahreflogout);
+
+
+
+                                        drop.appendChild(profile)
+                                        drop.appendChild(prescription)
+                                        drop.appendChild(addprescription)
+                                        drop.appendChild(appointment)
+                                        drop.appendChild(logout)
+                                    }
+
+
+
+
+
+                               
+
 									
 									
 									</script>
