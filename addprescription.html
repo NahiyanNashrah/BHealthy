@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/home.css">
     <link rel="stylesheet" type="text/css" href="styles/addprescription.css">
+    <script src="js/url.js"></script>
 
 
 </head>
@@ -206,7 +207,8 @@
     <script>
         function addprescription() {
 
-            var myurl = "http://localhost:8181/api/upload-prescrption"
+            
+            var myurl = backendurl +"api/upload-prescrption"
             var xhr = new XMLHttpRequest();
 
             var data;
