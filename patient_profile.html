@@ -226,7 +226,7 @@
 				
 				var data;
 				data = JSON.parse(window.localStorage.getItem('user'));
-				var url = "http://localhost:8181/api/auth/single_patient/" + data.phonenumber;
+				var url = backendurl+"api/auth/single_patient/" + data.phonenumber;
 
 
 				var xhr = new XMLHttpRequest();

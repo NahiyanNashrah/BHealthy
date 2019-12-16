@@ -185,7 +185,7 @@
                             processData: false, contentType: false, cache: false
                         }));
                         var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "http://localhost:8181/api/auth/signup_patient", true);
+                        xhr.open("POST", backendurl+"api/auth/signup_patient", true);
                         xhr.send(formData);
                         Swal.fire({
                             title: 'Account is creating'
