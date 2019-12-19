@@ -6,7 +6,15 @@ function getUrlVars() {
     return vars;
 }
 
-var id = getUrlVars()["id"];
+var id = window.localStorage.getItem('prescription')
+if(id == null){
+    var usert = JSON.parse(window.localStorage.getItem('user'));
+    id = usert.phonenumber;
+}
+else{
+    window.localStorage.removeItem('prescription')
+}
+
 
 var token;
 var data = window.localStorage.getItem('user');
@@ -16,7 +24,7 @@ token = dataJson.accessToken;
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/api/get-prescrption/'+id, true)
+request.open('GET', backendurl+'api/get-prescrption/'+id, true)
 request.setRequestHeader("Authorization", "Bearer "+token);
 
 request.onload = function () {

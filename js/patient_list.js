@@ -11,7 +11,7 @@ function patientlist() {
     var patienttable = document.getElementById('patienttable');
 
 
-    xhr.open('GET', 'http://localhost:8181/api/patient_list/' + dataJson.phonenumber +'/'+date, true)
+    xhr.open('GET', backendurl+'api/patient_list/' + dataJson.phonenumber +'/'+date, true)
 
     xhr.setRequestHeader("Authorization", "Bearer " + token);
     xhr.onload = function () {
@@ -44,7 +44,9 @@ function patientlist() {
 
 
                 tablerow.addEventListener('click', function () {
-                    window.location.replace("my_prescription.html?id="+u.patientphonenumber);
+                    window.localStorage.setItem('prescription',u.patientphonenumber);
+                    console.log(window.localStorage.getItem('prescription'));
+                    window.location.replace("my_prescription.html");
                 });
                 tableAppointment.appendChild(tablerow)
 
@@ -53,6 +55,3 @@ function patientlist() {
     }
     xhr.send()
 }
-
-
-

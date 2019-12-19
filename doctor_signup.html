@@ -1,193 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <title>BHealthy</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="BHealthy demo project">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/sign_up.css">
-        <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>BHealthy</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BHealthy demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/sign_up.css">
+    <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="styles/css-loader.css">
+    <script src="js/url.js"></script>
+
 </head>
+
 <body>
 
     <script>
+
+        function ValidateEmail(mail) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+                return (true)
+            }
+            // alert("You have entered an invalid email address!")
+            return (false)
+        }
         function signup_doc() {
-         console.log("hi");
-          const backendurl = "http://localhost:8181/";
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
+            console.log("hi");
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-           const confirmpassword = document.getElementById("confirm-password").value;
-          const degree = document.getElementById("degree").value;
-          const department = document.getElementById("department").value;
-          const visitinghour = document.getElementById("visiting-hour").value;
-          const location = document.getElementById("location").value;
-          const number_of_patients = document.getElementById("number-of-patients").value;
-          const fees = document.getElementById("fees").value;
-          const phonenumber = document.getElementById("phonenumber").value;
+            const confirmpassword = document.getElementById("confirm-password").value;
+            const degree = document.getElementById("degree").value;
+            const department = document.getElementById("department").value;
+            const visitinghour = document.getElementById("visiting-hour").value;
+            const location = document.getElementById("location").value;
+            const number_of_patients = document.getElementById("number-of-patients").value;
+            const fees = document.getElementById("fees").value;
+            const phonenumber = document.getElementById("phonenumber").value;
 
 
-    
-          var myurl = backendurl + "api/auth/signup_doctor";
-          var $load = $("#loadMe").modal({
-            backdrop: "static", //remove ability to close modal with click
-            keyboard: false, //remove option to close with keyboard
-            show: true //Display loader!
-          });
-    
-    
-          var xhr = new XMLHttpRequest();
-    
-          var data;
-    
-          xhr.open("POST", myurl, true);
-        //   xhr.setRequestHeader("Content-Type", "application/json");
-          var formData = new FormData();
-                    var file = propic.files[0];
-                    
-                    if (file == null) {
-                        alert('Please upload Image')
+
+
+            var myurl = backendurl + "api/auth/signup_doctor";
+            // var $load = $("#loadMe").modal({
+            //     backdrop: "static", //remove ability to close modal with click
+            //     keyboard: false, //remove option to close with keyboard
+            //     show: true //Display loader!
+            // });
+
+
+
+            var formData = new FormData();
+            if (document.getElementById('propic').value !== null) {
+                var fullPath = document.getElementById('propic').value;
+
+                var lastThree;
+                var filename;
+                if (fullPath !== null) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    filename = fullPath.substring(startIndex);
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
                     }
-                    else if (password != confirmpassword) {
-                        alert("Password Not Matched")
-                        
+
+                }
+                lastThree = filename.substr(filename.length - 3, 3)
+                console.log(lastThree)
+
+            }
+            var file = document.getElementById('propic').files[0];
+            var firsttwo = phonenumber.substr(0, 2);
+            console.log(firsttwo)
+
+
+
+            if (file == null) {
+                alert('Please upload Image')
+            }
+            else if (lastThree != "jpg" && lastThree != 'png') {
+                alert('Please provide valid image file ' + lastThree)
+            }
+            else if (!ValidateEmail(email)) {
+                alert("Email not valid")
+            }
+            else if (password.length < 6) {
+                alert('Password Length too small. Minimu 6 length');
+            }
+            else if (password != confirmpassword) {
+                alert("Password Not Matched")
+            }
+            else if (phonenumber.length !== 11 || firsttwo !== '01') {
+                alert('Please input valid phonenumber or Remove country code')
+            }
+
+
+
+            else {
+                formData.append("file", file);
+
+
+                formData.append("doctor", new Blob([JSON.stringify({
+                    "name": name,
+                    "password": password,
+
+                    "email": email,
+                    "degree": degree,
+                    "department": department,
+                    "visiting_hour": visitinghour,
+                    "location": location,
+                    "number_of_patient": number_of_patients,
+                    "fee": fees,
+                    "phonenumber": phonenumber,
+                    "role": ['user', 'doctor']
+                })], {
+                    type: "application/json",
+                    processData: false, contentType: false, cache: false
+                }));
+
+                var xhr = new XMLHttpRequest();
+
+                var data;
+
+                xhr.open("POST", myurl, true);
+                // xhr.setRequestHeader("Content-Type", "application/json");
+
+               
+
+                var loadere = document.getElementById('loadere').setAttribute('class', 'loader loader-default is-active')
+
+
+
+
+                xhr.onload = function () {
+                    if (this.status == 200) {
+                        // Here we go on the new page
+                        // var jsonResponse = JSON.parse(response);
+                        // console.log(JSON.stringify(response));
+
+                        window.location.replace("home.html");
                     }
                     else {
-                        formData.append("file", file);
+                        alert("Phonenumber Already Registered");
                         
+                 document.getElementById('loadere').setAttribute('class', 'loader ')
 
-                        formData.append("doctor", new Blob([JSON.stringify({ "name": name, 
-                                  "password": password,
 
-                                  "email":email,
-                                  "degree":degree,
-                                  "department":department,
-                                  "visiting_hour":visitinghour ,
-                                  "location":location,
-                                  "number_of_patient":number_of_patients,
-                                  "fee":fees,
-                                  "phonenumber":phonenumber,
-                                  "role" : ['user','doctor']})], {
-                            type: "application/json",
-                            processData: false, contentType: false, cache: false
-                        }));
-
-          
-
-          var response = xhr.response;
-          xhr.onload = function () {
-            if (this.status == 200) {
-              // Here we go on the new page
-             // var jsonResponse = JSON.parse(response);
-             console.log(JSON.stringify(response));
-              $("#loadMe").modal("hide");
-              window.location.replace("home.html");
+                    }
+                };
+                xhr.send(formData);
             }
-            else {
-    
-              $('#loadMe').hide();
-              alert("Wrong Phone Number or Password");
-            }
-          };
-          xhr.send(formData);
         }
-    }
-      </script>
+    </script>
     <div class="container">
         <div class="title">Create an account</div>
-            <div class="row row-lg-eq-height">
-                <div class="col-lg-8">
-                    <div class="sub_container">
-                        <div class="form">
-                             <label class="label">name :</label>
-                            <input type="text" class="input" id="name" placeholder="">
-                        </div>
-                    
-                         <div class="form">
-                            <label class="label">email :</label>
-                            <input type="text" class="input" id="email" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">password :</label>
-                            <input type="password" class="input" id="password" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">confirm password :</label>
-                            <input type="password" class="input" id="confirm-password" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">degree :</label>
-                            <input type="text" class="input" id="degree" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">gender:</label>
-                            <input type="text" class="input" id = "gender" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">department :</label>
-                            <input type="text" class="input" id = "department" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">visiting hour :</label>
-                            <input type="text" class="input" id="visiting-hour" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">location :</label>
-                            <input type="text" class="input" id="location" placeholder="">
-                        </div>
+        <div class="row row-lg-eq-height">
 
-                        <div class="form">
-                            <label class="label">number of patients :</label>
-                            <input type="text" class="input" id="number-of-patients" placeholder="">
-                        </div>
-                    
-                        <div class="form">
-                            <label class="label">fees :</label>
-                            <input type="text" class="input" id="fees" placeholder="">
-                        </div>
-
-                        <div class="form">
-                            <label class="label">phone number :</label>
-                            <input type="text" class="input" id="phonenumber" placeholder="">
-                        </div>
-                    
-                    
-                        <div class="reg">
-                            <div class="button reg_btn">
-                                <a href="javascript:signup_doc();">Register Now!</a></div>
-                            </div>
-                        </div>
-                </div>
+            <div data-text="Loading..." id="loadere"></div>
 
 
-                <div class="col-lg-4">
-                    <div class="img_container">
-                        <img src="images/profile_pic.png" alt="">
-                        <input type="file" accept="image/" id = "propic">
+            <div class="col-lg-8">
+                <div class="sub_container">
+                    <div class="form">
+                        <label class="label">name :</label>
+                        <input type="text" class="input" id="name" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">email :</label>
+                        <input type="text" class="input" id="email" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">password :</label>
+                        <input type="password" class="input" id="password" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">confirm password :</label>
+                        <input type="password" class="input" id="confirm-password" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">degree :</label>
+                        <input type="text" class="input" id="degree" placeholder="">
+                    </div>
+
+
+
+                    <div class="form">
+                        <label class="label">department :</label><br>
+
+                        <select class="custom-select custom-select-lg mb-2" style="width:550px;" id="department">
+                            <option selected>Select Department</option>
+                            <option value="Dental">Dental</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatric">Pediatric</option>
+                            <option value="Oncology">Oncology</option>
+                            <option value="Urology">Urology</option>
+                        </select>
+                    </div>
+
+                    <div class="form">
+                        <label class="label">visiting hour :</label>
+                        <input type="text" class="input" id="visiting-hour" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">location :</label>
+                        <input type="text" class="input" id="location" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">number of patients :</label>
+                        <input type="text" class="input" id="number-of-patients" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">fees :</label>
+                        <input type="text" class="input" id="fees" placeholder="">
+                    </div>
+
+                    <div class="form">
+                        <label class="label">phone number :</label>
+                        <input type="text" class="input" id="phonenumber" placeholder="">
+                    </div>
+
+
+                    <div class="reg">
+                        <div class="button reg_btn">
+                            <a href="javascript:signup_doc();">Register Now!</a></div>
                     </div>
                 </div>
+            </div>
 
 
-            </div>      
-</div>
+            <div class="col-lg-4">
+                <div class="img_container">
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/custom.js"></script>  
- 
+                    <input type="file" accept="image/" id="propic" style="margin-top: 200px;">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
+
 </body>
+
 </html>
